@@ -1,0 +1,229 @@
+\chapter{Relations}
+
+\begin{chapqt}{Marcus du Sautoy}
+The power of mathematics is often to change one thing into another, to change geometry into language.
+\end{chapqt}
+
+\begin{chapqt}{Henri Poincar\,e}
+Mathematics is the art of giving the same name to different things.
+\end{chapqt}
+
+\section*{Introduction}
+The first mathematical relation most students become aware of is the standard order on the natural numbers, which is later extended to the integers and finally the reals. A relation is a much more general concept, and by now you have probably worked with several others, perhaps without thinking about them as relations. In this chapter we define what we mean by a relation between sets, then define an equivalence relation on a set and use that idea to develop the set of rational numbers.
+
+\section{Relations}
+
+\begin{definition}
+Given two sets $A$ and $B$, a \emph{relation}\index{relation|textbf} from $A$ to $B$ is a subset of $A\times B$.  The relations we will be most interested in are usually from a set $A$ to itself, in which case we say that the relation is a relation on $A$. If $S$ is a relation, we frequently use the notation $xSy$ to indicate that the ordered pair $(x,y)$ is in $S$.
+\end{definition}
+
+Let's look at some examples of relations.
+
+\begin{example}
+The usual ordering $<$ on $\mathbb R$ is a relation on $\mathbb R$.  We don't usually think of this relation as a set of ordered pairs, but we could.  Define a subset $L$ of $\mathbb R\times \mathbb R$ by $L=\{(a,b)\mid b-a \hbox{ is positive}\}$.  In other words, an ordered pair $(a,b)$ is in the relation if $a<b$. \end{example}
+
+\begin{example}
+The set of points on a circle is another example of a relation on $\mathbb R$.  For example, we could let $C=\{(x,y)\mid x^2+y^2=1\}$.
+\end{example}
+
+\begin{example}
+A relation need not be something you've encountered before or that you necessarily have a use for.  Let $A$ denote the set of people in this room, and $B$ the set of possible hair colors.  One might define a relation $H$ from $A$ to $B$ by: $H=\{ (x,y)\mid \hbox{y is x's hair color}\}$.
+\end{example}
+
+\begin{definition}
+Let $A$ be a nonempty set and let $\sim$ be a relation on $A$.  We say that $\sim$ is:
+\index{relation!reflexive}
+\index{relation!symmetric}
+\index{relation!antisymmetric}
+\index{relation!transitive}
+\begin{enumerate}
+\item \emph{reflexive} if $a\sim a$ for every $a\in A$;
+\item \emph{symmetric} if $a\sim b$ implies $b\sim a$ for every $a,b\in A$;
+\item \emph{antisymmetric} if $a\sim b$ and $b\sim a$ imply $a=b$ for every $a,b\in A$.
+\item \emph{transitive} if $a\sim b$ and $b\sim c$ imply $a\sim c$ for every $a,b,c\in A$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Note that symmetry and antisymmetry are not logical opposites, though the names may lead you to believe otherwise. It is possible for a relation to satisfy both of these properties, or to satisfy neither of them.
+
+\begin{example}
+Let $<$ denote the relation ``less than'' on $\mathbb R$. Determine which of the properties listed above are satisfied by $<$.
+\begin{itemize}
+\item  $<$ is not reflexive since $1\not<1$  
+\item $<$ is not symmetric since $1<7$ and $7\not<1$
+\item $<$ is antisymmetric because the hypotheses $a<b$ and $b<a$ are never both satisfied
+\item $<$ is transitive since $a<b$ and $b<c$ implies that $a<c$
+\end{itemize}
+\end{example}
+
+\section{Equivalence Relations}
+
+Consider the following question: Are $\pi/4$ and $25\pi/4$ measurements of the same angle? It's certainly true that when we place these angles in standard position they have the same terminal side, which means that we can treat them as the same much of the time. On the other hand, if we think of the angle as a rotation, these two angles are certainly different. If you're playing pin the tail on the donkey, being spun through an angle of $25\pi/4$ is going to make you dizzier than being spun through an angle of $\pi/4$. Intuitively, the terminal side of the angle in this setting tells us what direction we end up pointing in. The angle tells us how far we rotated to end up pointing in that direction. When we are only concerned with the terminal side of an angle, how do we tell when two numbers are measures for \emph{equivalent} angles? You probably learned in a trigonometry or precalculus class that two measurements represent equivalent angles when they differ by an integer multiple of $2\pi$. In other words, two angles $\alpha$ and $\beta$ are said to be \emph{equivalent} when there is an integer $n$ such that $\alpha-\beta=2\pi n$. In the following example we consider this relation between real numbers.
+
+\begin{example}
+For $x,y\in\mathbb R$ we define $x\sim y$ if there is an integer $n$ such that $x-y=2\pi n$. Show that $\sim$ is reflexive, symmetric, and transitive.
+\begin{itemize}
+\item For any $x\in\mathbb R$ we have $x-x=0=2\pi (0)$. Since $0\in\mathbb Z$, $x\sim x$ and $\sim$ is relexive.
+\item Suppose that $x\sim y$, then there is an $n\in\mathbb Z$ so that $x-y=2\pi n$. It follows that $y-x=2\pi(-n)$. Since $-n\in\mathbb Z$ we have $y\sim x$ and $\sim$ is symmetric.
+\item Let $x,y,z\in\mathbb R$; assume that $x\sim y$ and $y\sim z$. By definition there are integers $n,m\in\mathbb Z$ such that $x-y=2\pi n$ and $y-z=2\pi m$. It follows that: \[x-z=(x-y)-(y-z)=2\pi n+2\pi m=2\pi(n+m)\] Now we have $x\sim z$, which shows that $\sim$ is transitive.
+\end{itemize}
+\end{example}
+
+\begin{definition}
+A relation on a set $A$ that is reflexive, symmetric, and transitive is said to be an \emph{equivalence relation}\index{equivalence relation|textbf} on $A$. \index{relation!equivalence|see{equivalence relation}}
+\end{definition}
+
+\subsection{Equivalence classes}
+
+\begin{definition}
+Let $A$ be a set and let $\sim$ be an equivalence relation on $A$.  For any $a\in A$ the set $[a]=\{ b\in A \mid b\sim a\}$ is called the \emph{equivalence class}\index{equivalence class|textbf} of $a$.  
+\end{definition}
+
+Given a set $A$ and an equivalence relation on $A$, the set of equivalence classes form a \emph{partition}\index{partition} of the set $X$. In other words, the collection of equivalence classes is a collection of nonempty subsets of $A$ with the proprties that every element of $A$ is in some equivalence class and no two distinct equivalence classes intersect each other. We formalize this in the following theorem:
+
+\begin{thrm}
+Let $A$ be a nonempty set and $\sim$ an equivalence relation on $A$. For each $a\in A$, let $[a]=\{ b\in A\mid a\sim b\}$.
+\begin{enumerate}
+\item For each $a\in A$, $a\in[a]$.
+\item If $[a]\neq[b]$, then $[a]\cap[b]=\emptyset$.
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}[Proof of (i).]
+Since $\sim$ is reflexive, $a\sim a$ for each $a\in A$.  By definition this implies that $a\in [a]$ and (i) is satisfied.
+\end{proof}
+
+\begin{proof}[Proof of (ii).]
+Suppose that $[a]\cap[b]\neq\emptyset$ and let $c\in[a]\cap[b]$.  Then $c\sim a$ and $c\sim b$.
+
+Since $c\sim a$ and $\sim$ is symmetric, it follows that $a\sim c$.  Now we have $a\sim c$ and $c\sim b$, so $a\sim b$ by transitivity.  Let $x\in[a]$, then $x\sim a$ by definition.  From transitivity it follows that $x\sim b$, so $x\in[b]$.  Hence $[a]\subset[b]$.
+
+Since $a\sim b$, it must also be true that $b\sim a$ by symmetry.  Let $y\in[b]$, then $y\sim b$ by definition.  From transitivity it follows that $y\sim a$, so $y\in[a]$.  Hence $[b]\subset[a]$.
+
+Since $[a]\subset[b]$ and $[b]\subset[a]$, $[a]=[b]$ by Theorem \ref{sets:equality}.
+\end{proof}
+
+\begin{example}
+Consider the equivalence relation $\equiv_5$ of Exercise \ref{ex:modulo} there are five equivalence classes associated with this equivalence relation:
+\begin{equation*}
+\begin{split}
+[0] &=\{\ldots,-10,-5,0,5,10,\ldots\}\\
+[1] &=\{\ldots,-9,-4,1,6,11,\ldots\}\\
+[2] &=\{\ldots,-8,-3,2,7,12,\ldots\}\\
+[3] &=\{\ldots,-7,-2,3,8,13,\ldots\}\\
+[4] &=\{\ldots,-6,-1,4,9,14,\ldots\}\\
+\end{split}
+\end{equation*}
+The equivalence classes are sets of integers that have the same remainder when divided by 5.
+\end{example}
+
+In the previous example, note that we had several ways to refer to each equivalence class.  For example $[1]=[16]$, so we may as well have used $[16]$ as a name for this equivalence class.  In this context the numbers $1$ and $16$ (or any other member of the class) are called \emph{representatives}\index{equivalence class!representative} of this equivalence class, and any representative can be used to name the equivalence class.
+
+\section{The rational numbers}
+
+In this section we are going to show how to use the ideas in this chapter to construct the set of rational numbers.\index{rational numbers} We assume that the sets $\mathbb N$ and $\mathbb Z$ are given and have their usual properties.\footnote{For an axiomatic development of the natural numbers and integers, see [D] or [H].} We will use the characterization of the rationals as the set of numbers that can be expressed as a fraction of integers, so we begin by defining the set $\mathbb F=\mathbb Z\times\mathbb N$. Note that $\mathbb F$ is the set of all ordered pairs $(a,b)$ where $a\in\mathbb Z$ and $b\in\mathbb N$. We want to think of $\mathbb F$ as a set of fractions of integers, so we denote an ordered pair $(a,b)\in\mathbb F$ by $a/b$ or $\frac ab$. 
+
+Note that a fraction is not quite the same thing as a rational number, for example $1/2$ and $3/6$ are different fractions that represent the same rational number. We define an equivalence relation $\cong$  on $\mathbb F$\index{equivalence relation} that clarifies when two fractions represent the same rational as follows:
+
+\begin{definition}
+Given two fractions $a/b$ and $c/d$ in $\mathbb F$, we say that $a/b\cong c/d$ if $ad=bc$.
+\end{definition}
+
+\begin{thrm}\label{thrm:rationals}
+The relation $\cong$ is an equivalence relation on $\mathbb F$.
+\end{thrm}
+
+\begin{proof}
+To see that $\cong$ is reflexive, note that for every $a/b\in\mathbb F$ we have $ab=ba$, so $a/b\cong a/b$.
+
+Now suppose that $a/b\cong c/d$, then by definition $ad=bc$. Using the fact that multiplication is commutative we see that $cb=da$, so $c/d\cong a/b$ and $\cong$ is symmetric.
+
+It remains to show that $\cong$ is transitive, which is a little bit more work. Assume that $a/b\cong c/d$ and $c/d\cong e/f$, then by definition we have $ad=bc$  and $cf=de$. We multiply equal expressions, then perform some algebra, making sure that we do not try to divide by $0$:
+\begin{equation*}
+\begin{split}
+(ad)(cf)&=(bc)(de)\\
+(af)(cd)&=(be)(cd)\\
+af&=be\\
+\end{split}
+\end{equation*}
+Now we have $a/b\cong e/f$ and $\cong$ is transitive as desired.
+\end{proof}
+
+We now define the set of rationals to be the set of equivalence classes\index{equivalence class} of fractions. In this construction the two fractions $1/2$ and $3/6$ do indeed represent the same rational number since they are representatives\index{equivalence class!representative} of the same equivalence class. This construction might be a bit unsatisfying in the sense that it tells us nothing about how we might add or multiply rational numbers. Even if we know how to add fractions, how would we add two equivalence classes of fractions? One possibility is that we might add two equivalence classes by adding their representatives, so for example we might try: \[ \left[ \frac 12\right] \oplus \left[ \frac 23\right] =\left[ \frac{1(3)+2(2)}{2(3)}\right]=\left[ \frac 56\right] \] There is a potential problem with this, though. There are infinitely many choices of fractions representing each rational number. Are we sure that we arrive at the same result for all of those possible choices? The next theorem says that we do.
+
+\begin{thrm}\label{thrm:rationaladdition}
+Suppose that $a/b\cong x/y$ and $c/d\cong w/z$, where $a/b$, $c/d$, $x/y$, and $w/z$ are all in $\mathbb F$, then: \[ \frac{ad+bc}{bd}\cong \frac{xz+yw}{
+yz}.\]
+\end{thrm}
+
+\begin{proof}
+By hypothesis we have $ay=bx$ and $cz=dw$. We want to show that $(ad+bc)(yz)=(bd)(xz+yw)$. Using our hypotheses we have:
+\begin{equation*}
+\begin{split}
+(ad+bc)(yz)&=(ad)(yz)+(bc)(yz)\\
+&=(ad)(yz)+(bc)(yz)\\
+&=(ay)(dz)+(cz)(by)\\
+&=(bx)(dz)+(dw)(by)\\
+&=(bd)(xz)+(bd)(yw)\\
+&=(bd)(xz+yw)\text{,}\\
+\end{split}
+\end{equation*}
+which completes the proof.
+\end{proof}
+
+The proof of the following theorem is left for exercise \ref{exer:rationalmultiply}.
+
+\begin{thrm}\label{thrm:rationalmultiply}
+Suppose that $a/b\cong x/y$ and $c/d\cong w/z$, where $a/b$, $c/d$, $x/y$, and $w/z$ are all in $\mathbb F$, then: \[ \frac{ac}{bd}\cong \frac{xw}{yz}.\]
+\end{thrm}
+
+Theorems \ref{thrm:rationaladdition} and \ref{thrm:rationalmultiply} allow us to make the following definitions, where we may choose any representative from each equivalence class.
+
+\begin{definition}
+Let $[a/b]$ and $[c/d]$ be rational numbers, then we define addition and multiplication by:
+\[\left[ \frac ab\right] \oplus \left[ \frac cd\right] =\left[ \frac{ad+bc}{bd} \right] \quad\text{and}\quad \left[ \frac ab\right] \otimes\left[ \frac cd\right] =\left[\frac{ac}{bd}\right]\text{.}\]
+\end{definition}
+
+\clearpage
+
+\section*{Chapter \arabic{chapter} Exercises}
+\addcontentsline{toc}{section}{\protect\numberline{}Chapter \arabic{chapter} Exercises}
+\anschapter
+
+\begin{exercise}\label{exer:relations}
+Determine whether or not each of the following relations is reflexive, symmetric, antisymmetric, and/or transitive.  Are any of these equivalence relations?
+\begin{enumerate}
+\item The relation $\leq$ on $\mathbb R$.
+\item Equality on $\mathbb R$, i.e. the set of ordered pairs of real numbers whose first and second coordinates are equal.
+\item\label{relations:divides}\markit The relation $\mid$ on $\mathbb N$, where $a\mid b$ means that $b=an$ for some $n\in{\mathbb N}$.
+\answer{{\bfseries \ref{exer:relations}(\ref{relations:divides})} $\mid$ is reflexive, antisymmetric, and transitive}
+\item The relation $\sim$ on $\mathbb N$ defined by $a\sim b$ if there is an integer $n>1$ that evenly divides both $a$ and $b$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{ex:modulo}
+Define the relation $\equiv_5$ on $\mathbb Z$ by: $a\equiv_5 b$ if there is an integer $n$ so that $b-a=5n$.  Show that $\equiv_5$ is an equivalence relation on $\mathbb Z$.  Note: this is a fairly common equivalence relation.  The phrase $a\equiv_5 b$ is usually read ``$a$ is equivalent to $b$ modulo 5.''
+\end{exercise}
+
+\begin{exercise}
+A relation on a set $X$ is said to be a \emph{partial order}\index{partial order} on $X$ if it is reflexive, antisymmetric, and transitive. Let $X={\cal P}(\mathbb R)$ and consider the inclusion relation defined by $A\subset B$.
+\begin{enumerate}
+\item Show that $\subset$ is a partial order on $X$.
+\item Is strict inclusion $\subsetneq$ a partial order on $X$? 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{ex:circles}
+Define a relation $\sim$ on $\mathbb R^2=\mathbb R\times\mathbb R$ by $(x,y)\sim(w,z)$ if $x^2+y^2=w^2+z^2$.  Show that $\sim$ is an equivalence relation on $\mathbb R^2$.
+\end{exercise}
+
+\begin{exercise}
+Consider the equivalence relation defined in Exercise \ref{ex:circles}. For each point $(x,y)\in\mathbb R^2$, the equivalence class $[(x,y)]$ is a familiar geometric figure in $\mathbb R^2$. What is it?
+\end{exercise}
+
+\begin{exercise}\label{exer:rationalmultiply}
+Prove Theorem \ref{thrm:rationalmultiply}.
+\end{exercise}
+
+\clearpage

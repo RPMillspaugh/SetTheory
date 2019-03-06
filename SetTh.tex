@@ -1,0 +1,133 @@
+\documentclass[12pt]{book}
+\usepackage{amsmath, amsthm, amssymb, mathpazo, epic, eepic, array, graphics}
+\usepackage{makeidx, marginnote}
+\usepackage{fontspec} % Requires XeLaTex or LuaLaTex
+\usepackage{tikz}
+\usepackage[nottoc]{tocbibind}
+\usepackage[Lenny]{fncychap}
+
+%%%  USE ONLY ONE OF THE FOLLOWING COLORLINKS LINES
+
+\usepackage[colorlinks]{hyperref} % Red hyperlinks
+%\usepackage[colorlinks=true, linkcolor=blue]{hyperref} % Blue hyperlinks 
+%\usepackage[colorlinks=true, linkcolor=black]{hyperref} % Black hyperlinks (better for printing)
+
+\setmainfont{Times New Roman} % Requires XeLaTex or LuaLaTex
+
+\newcommand{\cmps}
+  {{\scriptstyle\circ}}
+
+\font\cscp=cmcsc10
+
+\title{Elementary Set Theory}
+\author{Richard P. Millspaugh\\University of North Dakota}
+\date{}
+
+\makeindex
+
+\pagestyle{headings}
+\theoremstyle{plain}
+\newtheorem{thrm}{Theorem}[chapter]
+\newtheorem*{falsethrm}{Conjecture}
+\newtheorem{coro}{Corollary}[thrm]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem{exercise}{}[chapter]
+\newtheorem{question}{Question}[chapter]
+\newtheorem*{question*}{Question}
+\newlength{\linwid}
+\setlength\linwid{5 em}
+\newcommand{\hence}{\hrule width \linwid \item [$\therefore$]}
+\renewcommand\theenumi{\roman{enumi}}
+\renewcommand\labelenumi{(\theenumi)}
+\renewcommand*{\marginfont}{\footnotesize\color{blue}\slshape}
+
+\newenvironment{logarg}
+  {\begin{list}{}{\itemindent=3pt \itemsep=0pt \leftmargin=.5em}}{\end{list}}
+
+\newenvironment{centeredarg}
+   {\begin{center}\begin{minipage}{1.5truein}\begin{logarg}}{\end{logarg}\end{minipage}\end{center}}
+
+\newsavebox{\Citename}
+\newenvironment{chapqt}[1]
+  {\sbox\Citename{\emph{#1}}\begin{quote}}%
+  {\hspace*{\fill}\break\hspace*{\fill}\usebox{\Citename}\end{quote}}
+
+\newwrite\ansfile
+\immediate\openout\ansfile=answers.tex
+\newcommand{\answer}[1]{ \immediate\write\ansfile{\unexpanded{\smallbreak\noindent #1}}}
+\newcommand{\anschapter}{ \immediate\write\ansfile{\unexpanded{\bigbreak\noindent\bgroup\Large\bfseries} Chapter \arabic{chapter}\unexpanded{\egroup\medbreak}}}
+\immediate\write\ansfile{\unexpanded{\chapter{Hints and Answers}}}
+
+\newcommand{\markit}{\relax}
+
+\newcommand{\proparg}[3]{%
+{\makebox[.15\linewidth][l]{\itshape #1}\ignorespaces}%
+{\makebox[.3\linewidth][l]{#2}\ignorespaces}%
+{\makebox[.5\linewidth][l]{\upshape #3}\ignorespaces}%
+}%
+
+\newlength{\midlength}
+\setlength\midlength{.5\linewidth}
+\newcommand{\wideproparg}[3]{%
+{\makebox[.1\linewidth][l]{\itshape #1}\ignorespaces}%
+{\makebox[\midlength][l]{#2}\ignorespaces}%
+{\makebox[.25\linewidth][l]{\upshape #3}\ignorespaces}%
+}%
+
+\newcommand{\vennAll}[2]{
+\begin{center}
+\begin{tikzpicture}
+\draw (-4,-2.5) -- (4,-2.5) -- (4,2.5) -- (-4,2.5) -- cycle;
+\draw (1,0) circle [radius=2] (1,1.5) node {#1};
+\draw (1.5,-.5) circle [radius=1.2] (1.5,0) node {#2};
+\end{tikzpicture}
+\end{center}}
+
+\newcommand{\vennSome}[2]{
+\begin{center}
+\begin{tikzpicture}
+\draw (-4,-2.5) -- (4,-2.5) -- (4,2.5) -- (-4,2.5) -- cycle;
+\draw (1,0) circle [radius=2] (1,1.5) node {#1};
+\draw (-1,-.5) circle [radius=1.8] (-1,.5) node {#2};
+\end{tikzpicture}
+\end{center}}
+
+\newcommand{\vennNone}[2]{
+\begin{center}
+\begin{tikzpicture}
+\draw (-4,-2.5) -- (4,-2.5) -- (4,2.5) -- (-4,2.5) -- cycle;
+\draw (1.5,.5) circle [radius=1.5] (1.5,1.5) node {#1};
+\draw (-1.5,-.5) circle [radius=1.5] (-1.5,.5) node {#2};
+\end{tikzpicture}
+\end{center}}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\include{chapter0new}
+\tableofcontents
+
+\mainmatter
+\include{Chapter1new} 
+\include{Chapter2new}
+\include{chapter3new}
+\include{chapter4new}
+\include{chapter5new}  
+\include{chapter6new}
+\include{chapter7new}
+
+\backmatter
+\appendix
+\include{appendix}
+
+\immediate\closeout\ansfile
+
+\cleardoublepage
+
+\printindex
+
+\end{document}

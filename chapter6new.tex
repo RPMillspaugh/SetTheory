@@ -1,0 +1,369 @@
+\chapter{The Real Numbers}
+
+\begin{chapqt}{Stan Gudder}
+The essence of mathematics is not to make simple things complicated, but to make complicated things simple.
+\end{chapqt}
+
+\begin{chapqt}{George Polya}
+Mathematics consists in proving the most obvious thing in the least obvious way.
+\end{chapqt}
+
+\section*{Introduction}
+
+We now turn our attention to developing a mathematical description of the real numbers. All of the results of calculus can be derived from these basic properties of the real number system,\index{real numbers|(} which is usually done in a first course in real analysis. Our basic assumptions about the real numbers are called axioms, and they are divided into several groups. Many of these axioms will be familiar to you from previous courses in algebra.
+
+\section{Field Axioms}
+
+Taken as a group, the field axioms\index{field axioms} tell us that the real numbers together with the operations of addition and multiplication form what is known as a {\sl field}.\index{field} Very informally, you might think of a field as something that satisfies the usual rules you encountered in high school algebra. Fields and related objects are studied in more depth in a course in abstract algebra.
+
+\paragraph{Field Axioms.} The set of real numbers $\mathbb R$ is a collection of objects together with the two binary operations addition and multiplication that satisfy the following properties:
+
+\begin{enumerate}
+\item Commutative Laws: For every $a,b\in\mathbb R$, $a+b=b+a$ and $ab=ba$.\index{commutative law}
+\item Associative Laws: For every $a,b,c\in\mathbb R$, $(a+b)+c=a+(b+c)$ and $(ab)c=a(bc)$.\index{associative law}
+\item Distributive Law: For every $a,b,c\in\mathbb R$, $a(b+c)=ab+ac$.\index{distributive law}
+\item Identities: There are distinct elements $0$ and $1$ in $\mathbb R$ such that $a\cdot 1=a$ and $a+0=a$ for every $a\in\mathbb R$.\index{identities}
+\item Additive Inverses: For every $a\in\mathbb R$, there is an element $-a\in\mathbb R$ such that $a+(-a)=0$.\index{additive inverse}
+\item Multiplicative Inverses: For every $a\in\mathbb R$ with $a\neq0$, there is an element $a^{-1}\in\mathbb R$ such that $aa^{-1}=1$.\index{multiplicative inverse}
+\end{enumerate}
+
+Any set of objects satisfying all of these properties is a \emph{field}.\index{field|textbf} Other examples of fields include the fields of rational numbers $\mathbb Q$, real numbers $\mathbb R$, and complex numbers $\mathbb C$. As we develop further axioms for the real numbers, we will also narrow the list of fields that satisfy all of the axioms.
+
+A number of the familiar algebraic properties of the real numbers are immediate consequences of the field axioms. A few of them are collected in the following theorem, though there are certainly many others.
+
+\begin{thrm}\label{thrm:algebra}
+For any real numbers $a,b,c$, the following are true:
+\begin{enumerate}
+\item If $a+b=a+c$, then $b=c$. \label{thrm:addcanc}
+\item $-(-a)=a$. \label{thrm:addinvinv}
+\item If $a\neq 0$ and $ab=ac$, then $b=c$. \label{thrm:multcanc}
+\item If $a\neq 0$, then $(a^{-1})^{-1}=a$. \label{thrm:multinvinv}
+\item $a\cdot 0=0$. \label{thrm:zeromult}
+\item $-a=(-1)a$. \label{thrm:addinv}
+\item If $ab=0$, then $a=0$ or $b=0$. \label{thrm:zerofactor}
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}
+We prove parts  {\itshape (\ref{thrm:addinvinv})}, {\itshape (\ref{thrm:multcanc})}, and {\itshape (\ref{thrm:addinv})}. The remaining proofs are exercises.
+
+We first show that {\itshape(\ref{thrm:addinvinv})} is true. To see this, note that $-(-a)$ is the additive inverse of $-a$. The reader should justify each of the following steps:
+\begin{equation*}
+\begin{split}
+a+(-a)&=0\\
+&=-a+(-(-a))\\
+&=-(-a)+(-a)\\
+\end{split}
+\end{equation*}
+so $a+(-a)=-(-a)+(-a)$. We apply part {\itshape(\ref{thrm:addcanc})} to see that $a=-(-a)$ as desired.
+
+To prove {\itshape (\ref{thrm:multcanc})}, suppose that $a\neq 0$ and $ab=ac$. Since $a\neq0$, $a$ has a multiplicative inverse $a^{-1}$. The reader should give a justification for each step of the following:
+\begin{equation*}
+\begin{split}
+b&=1\cdot b\\
+&=(a^{-1}a)b\\
+&=a^{-1}(ab)\\
+&= a^{-1}(ac)\\
+&=(a^{-1}a)c\\
+&=1\cdot c\\
+&=c\\
+\end{split}
+\end{equation*}
+
+To prove {\itshape (\ref{thrm:addinv})}, let $a$ be any real number. Then:
+\begin{equation*}
+\begin{split}
+a+(-1)a &= 1\cdot a+(-1)a\\
+&=a(1+(-1))\\
+&=a\cdot 0\\
+&=0\\
+\end{split}
+\end{equation*}
+Hence $a+(-1)a=0=a+(-a)$ and we may apply part {\itshape (\ref{thrm:addcanc})} to see that $(-1)a=-a$.
+\end{proof}
+
+\section{Order Axioms}
+
+As noted previously, there are a number of common fields. One of the differences between $\mathbb R$ and $\mathbb C$ is that we think of the real numbers as lying in order along a line. There is no natural way to organize the complex numbers in this fashion. The next group of axioms make precise what we mean when we say that the real numbers form an \emph{ordered field}. \index{field!ordered}
+
+\paragraph{Order Axioms.} There is an order $<$ defined on the real numbers $\mathbb R$ satisfying: \index{order axioms|textbf}
+\begin{enumerate}
+\item Transitivity: If $a<b$ and $b<c$, then $a<c$.\index{transitive}
+\item Trichotomy: For every two real numbers $a$ and $b$, exactly one of the following holds: \index{trichotomy}
+\begin{equation*}
+a<b \ \ \text{ or } \ \ a=b \ \ \text{ or } \ \ b<a
+\end{equation*}
+\item If $a<b$, then $a+c<b+c$ for every $c\in\mathbb R$.
+\item If $a<b$ and $c>0$, then $ac<bc$. \label{ax:orderprod}
+\end{enumerate}
+
+We derive several consequences of the fact that $\mathbb R$ is an ordered field.
+
+\begin{thrm} \label{thrm:orderbasic}
+The following statements are true in $\mathbb R$:
+\begin{enumerate}
+\item $a>0$ iff $-a<0$. \label{thrm:posneg}
+\item If $a<b$, then $-a>-b$. \label{thrm:ineqflip}
+\item If $a\neq0$, then $a^2>0$. \label{thrm:possqr}
+\item $1>0$. \label{thrm:onegtzero}
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}
+To prove part {\itshape (\ref{thrm:posneg})}, assume first that $a>0$. By Trichotomy we have either $-a<0$, $-a=0$, or $-a>0$. We will show that two of these possibilities lead to contradictions, forcing the remaining option to be true. If $-a=0$ then we have $a=a+0=a+(-a)=0$, which contradicts the fact that $a>0$. If $-a>0$ then we have $0=a+(-a)>a+0=a$, once again contradicting the fact that $a>0$. We have shown that neither $-a=0$ nor $-a>0$ can be true, so it must be the case that $-a<0$ as desired. The remaining direction of the proof of part {\itshape (\ref{thrm:posneg})} is left as a homework exercise.
+
+We next prove part {\itshape (\ref{thrm:ineqflip})}. The reader should determine which axiom or theorem justifies each step of the following:
+\begin{equation*}
+\begin{split}
+a&<b\\
+a+(-b)&<b+(-b)\\
+a+(-b)&<0\\
+((-a)+a)+(-b)&<(-a)+0\\
+-b&<-a\\
+\end{split}
+\end{equation*}
+
+The proofs of the remaining parts of the theorem are left to the reader.
+\end{proof}
+
+\begin{thrm} \label{thrm:orderprod}
+Let $a,b\in\mathbb R$.
+\begin{enumerate}
+\item If $a>0$ and $b>0$, then $ab>0$.
+\item If $a<0$ and $b<0$, then $ab>0$.
+\item If $a>0$ and $b<0$, then $ab<0$.
+\end{enumerate}
+\end{thrm}
+
+\begin{thrm} \label{thrm:orderrecip}
+Let $a\in\mathbb R$.
+\begin{enumerate}
+\item If $a>0$, then $a^{-1}>0$. \label{thrm:orderrecippos}
+\item If $a<0$, then $a^{-1}<0$. \label{thrm:orderrecipneg}
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}
+To prove part {\itshape (\ref{thrm:orderrecippos})} we assume $a>0$ and apply Trichotomy. If $a^{-1}<0$, then $1=aa^{-1}<0$ by Theorem \ref{thrm:orderprod}, but this contradicts Theorem \ref{thrm:orderbasic}{\itshape (\ref{thrm:onegtzero})}. If $a^{-1}=0$, then we have $1=aa^{-1}=a\cdot0=0$, which again contradicts Theorem \ref{thrm:orderbasic}{\itshape (\ref{thrm:onegtzero})}. The only remaining possibility is that $a^{-1}>0$ as desired.
+
+The proof of {\itshape (\ref{thrm:orderrecipneg})} is similar and is left for the reader.
+\end{proof}
+
+\begin{thrm} \label{thrm:ordersquares}
+Let $a\geq 0$ and $b\geq 0$. Then $a<b$ iff $a^2<b^2$.
+\end{thrm}
+
+\begin{proof}
+We assume throughout that $a\geq0$ and $b\geq0$. By Trichotomy we have exactly one of $a<b$, $a=b$, or $a>b$; we also have exactly one of $a^2<b^2$, $a^2=b^2$, or $a^2>b^2$.
+
+If $a<b$, then $a^2<b^2$ by an application of exercise \ref{ex:orderprod}.
+
+If $a=b$, then $a^2=b^2$.
+
+If $a>b$, then $a^2>b^2$ by an application of exercise \ref{ex:orderprod}.
+
+It now follows that $a<b$ if and only if $a^2<b^2$.
+\end{proof}
+
+\section{Completeness of $\mathbb R$}
+
+Our axioms so far insure that $\mathbb R$ is an ordered field. \index{field!complete} The field $\mathbb Q$ of rational numbers is also an ordered field, so we need something further to distinguish between $\mathbb R$ and $\mathbb Q$. Our last axiom is based on the observation that the field $\mathbb Q$ has \emph{holes}, whereas $\mathbb R$ does not. Let's first consider an example to clarify what we mean by this.
+
+\begin{example}
+Let $A$ and $B$ be the following sets:
+\begin{equation*}
+\begin{split}
+A&=\{ q\in\mathbb Q \mid q>0 \text{ and }q^2\leq 2 \}\\
+B&=\{ x\in\mathbb R \mid x>0 \text{ and } x^2\leq 2 \}\\
+\end{split}
+\end{equation*}
+As we will show in Theorem \ref{thrm:realsqrttwo}, there is a real number $\sqrt 2$ whose square is 2. The number $\sqrt 2$ is in $B$ and $\sqrt 2$ is larger than every other number in $B$.
+
+As we showed in Theorem \ref{thrm:sqrttwo}, there is no rational number whose square is 2. It can be shown that for every number in $A$, there are larger numbers that are also in $A$.
+\end{example}
+
+\subsection{Upper and lower bounds}
+
+\paragraph{Definition.} Let $A$ be a nonempty set of real numbers. We say that a number $u$ is an \emph{upper bound}\index{upperbound|textbf} for $A$ if $x\leq u$ for every $x\in A$. We say that a number $m$ is a \emph{lower bound}\index{lower bound|textbf} for $A$ if $x\geq m$ for every $x\in A$. We say that $A$ is \emph{bounded above}\index{bounded!above} \index{bounded}  if $A$ has an upper bound, that $A$ is \emph{bounded below}\index{bounded!below} if $A$ has a lower bound, and that $A$ is \emph{bounded} if $A$ is bounded above and below.
+
+\begin{example}
+Let $A=\{ a\mid a^2<5 \}$, $B= [0,7)$, $C=\mathbb N$, and $D=\mathbb Z$.
+
+The number $5$ is an upper bound for $A$ and $-3$ is a lower bound for $A$.
+
+The set $B$ has an upper bound at $7$ and a lower bound at $0$.
+
+The set $C$ has a lower bound at $1$, but no upper bound.
+
+The set $D$ has no upper or lower bounds.
+\end{example}
+
+The previous example illustrates several things. It is possible for a nonempty set to have both upper and lower bounds, just one bound, or no bounds at all. Upper and lower bounds may or may not be elements of the set. Finally, upper and lower bounds are not unique. Transitivity implies that if $M$ is an upper bound for a set $A$, then every number larger than $M$ is also an upper bound for $A$. Similarly, if $m$ is a lower bound for $A$ then every number smaller than $m$ is a lower bound for $A$.
+
+Consider the set $A=\{ a\mid a^2\leq 5 \}$ from the previous example again. We claimed that $5$ is an upper bound, and that is certainly true, but note that $3$ is also an upper bound. In some sense this smaller upper bound is a ``better'' bound for $A$ because it puts a tighter restriction on the size of the elements of $A$. This is approximately like saying that Grand Forks is a better way to describe the location of UND than North Dakota. In this sense the best possible upper bound would be the smallest one, if there is one. In this particular case, $A$ has a smallest upper bound in $\mathbb R$ ($\sqrt5$) but not in $\mathbb Q$. This is the basic difference between $\mathbb Q$ and $\mathbb R$ that we wish to capture in an axiom. First,
+we need another couple of definitions.
+
+\paragraph{Definition.} Let $A$ be a nonempty subset of $\mathbb R$. We say that a number $u$ is a \emph{least upper bound} (LUB) \index{least upper bound|textbf} for $A$ if both of the following are true:
+\begin{enumerate}
+\item For every $a\in A$, $a\leq u$.
+\item If $b$ is an upper bound for $A$, then $u\leq B$.
+\end{enumerate}
+We say that a number $m$ is a \emph{greatest lower bound} (GLB)\index{greatest lower bound|textbf} for $A$ if both of the following are true:
+\begin{enumerate}
+\item For every $a\in A$, $a\geq m$.
+\item If $b$ is a lower bound for $A$, then $m\geq b$.
+\end{enumerate}
+Note that a LUB is sometimes called a \emph{supremum}\index{supremum|see{least upper bound}} and a GLB is sometimes called an \emph{infimum}.\index{infimum|see {greatest lower bound}}
+
+It is not hard to prove that, unlike upper bounds, a set can have only one least upper bound. This fact is made explicit in the following theorem, whose proof is left as exercise \ref{exer:uniqueLUB}.
+
+\begin{thrm} \label{thrm:uniquelub}
+Let $A$ be a nonempty subset of $\mathbb R$. If $u$ and $v$ are least upper bounds for $A$, then $u=v$.
+\end{thrm}
+
+The following theorem says that the least upper bound of a set must in some sense be ``close to'' the set.
+
+\begin{thrm} \label{thrm:lubclose}
+Let $A$ be a nonempty subset of $\mathbb R$ and let $u$ be the least upper bound for $A$. If $x<u$, then there is an element $a\in A$ such that $x<a$.
+\end{thrm}
+
+\begin{proof}
+Suppose that $u$ is the least upper bound for $A$ and that $x<u$. Assume that there is no $a\in A$ such that $x<a$, then $a\leq x$ for every $a\in A$ by Trichotomy. It follows by definition that $x$ is an upper bound for $A$, but this contradicts the fact that $u$ is the least upper bound for $A$ since $x<u$.
+\end{proof}
+
+We are now ready to state our final axiom, which says that $\mathbb R$ is \emph{complete}.\index{field!complete|textbf}
+
+\paragraph{The Completeness Axiom.} Let $A$ be a nonempty subset of $\mathbb R$. If $A$ has an upper bound, then $A$ has a least upper bound.\index{completeness axiom|textbf}
+
+\smallbreak
+There are a number of consequences of the Completeness Axiom, most of which are beyond the scope of this text. We will look at only a couple of them. We begin with the fairly intuitive seeming fact that for any real number $x$, there is a natural number larger than $x$.
+
+\begin{thrm}
+(Archimedian Property) If $x\in\mathbb R$, then there is a number $n_x \in\mathbb N$ such that $x\leq n_x$.\index{Archimedian Property}
+\end{thrm}
+
+\begin{proof}
+Assume to the contrary that there is a real number $x$ so that $n<x$ for every natural number $n$. In this case $x$ is an upper bound for the set $\mathbb N$. Applying the Completeness Axiom, $\mathbb N$ must have a least upper bound $m$ in $\mathbb R$. Since $m-1<m$, Theorem \ref{thrm:lubclose} implies that there is a natural number $n$ such that $m-1<n$. Now $n+1$ is also a natural number and $m<n+1$, which contradicts the fact that $m$ is an upper bound for $\mathbb N$.
+\end{proof}
+
+We previously commented, without proof, that the Completeness Axiom would allow us to distinguish $\mathbb R$ from $\mathbb Q$. We will now make this explicit by proving that there is at least one real number that is not rational.\footnote{In fact there are more irrational numbers than there are rational numbers, as we shall see in the final chapter.} We proved previously (Theorem \ref{thrm:sqrttwo}) that there is no rational number whose square is $2$. We now show that the Completeness Axiom implies that there must be a real number $x$ with $x^2=2$.
+
+\begin{thrm}\label{thrm:realsqrttwo}
+There is a number $x\in\mathbb R$ such that $x^2=2$. 
+\end{thrm}
+
+\begin{proof}
+Let $A=\{ a\in\mathbb R \mid a^2\leq 2 \}$. Note that $A$ is not empty since $1\in A$. We claim that $2$ is an upper bound for $A$. To see this note that if $t>2$, then $t^2>2\cdot 2=4>2$ (see exercise \ref{ex:orderprod}), so $t\notin A$. Since $A$ is a nonempty subset of $\mathbb R$ that is bounded above, $A$ must have a least upper bound $x$. We will use Trichotomy to show that $x^2=2$.
+
+Assume first that $x^2<2$. Note that $\frac{2x+1}{2-x^2}$ is a positive real number. By the Archimedian Property there must be a natural number $n$ such that $n> \frac{2x+1}{2-x^2}$. Since $n>\frac{2x+1}{2-x^2}>0$, it follows that $\frac 1n<\frac{2-x^2}{2x+1}$. We will show that $x+\frac 1n \in A$, which will contradict the fact that $x$ is an upper bound for $A$. To see that $x+\frac 1n\in A$, we compute:
+\begin{equation*}
+\begin{split}
+\left(x+\frac 1n\right)^2&=x^2+\frac{2x}n+\frac1{n^2}\\
+&=x^2+\frac 1n\left(2x +\frac 1n\right)\\
+&\leq x^2+\frac 1n(2x+1)\\
+&<x^2+(2-x^2)\\
+&=2\\
+\end{split}
+\end{equation*}
+Now $x+\frac 1n\in A$, which leads to the desired contradiction. It follows that $c^2<2$ cannot hold.
+
+Next suppose that $x^2>2$. In this case $\frac{2x}{x^2-2}$ is a positive number and we may find $m\in\mathbb N$ such that $m >\frac{2x}{x^2-2}$. This in turn implies that $\frac 1m<\frac{x^2-2}{2x}$. We show that $(x-\frac1m)^2>2$:
+\begin{equation*}
+\begin{split}
+\left(x-\frac1m\right)^2&=x^2-\frac{2x}m +\frac1{m^2}\\
+&>x^2-\frac{2x}m\\
+&>x^2-(2x)\frac{x^2-2}{2x}\\
+&=2\\
+\end{split}
+\end{equation*}
+Now Theorem \ref{thrm:ordersquares} implies that if $s>x-\frac1m$, then $s^2>(x-\frac1m)^2>2$, so $x-\frac1m$ is an upper bound for $A$. This would contradict the fact that $x$ is the least upper bound for $A$, so $x^2>2$ cannot hold.
+
+The only possibility left is that $x^2=2$ as desired.\index{real numbers|)}
+\end{proof}
+
+\clearpage
+
+\section*{Chapter \arabic{chapter} Exercises}
+\addcontentsline{toc}{section}{\protect\numberline{}Chapter \arabic{chapter} Exercises}
+\anschapter
+
+\begin{exercise}
+Prove part {\itshape(\ref{thrm:addcanc})} of Theorem \ref{thrm:algebra}.
+\end{exercise}
+
+\begin{exercise}
+Prove part {\itshape(\ref{thrm:multinvinv})} of Theorem \ref{thrm:algebra}.
+\end{exercise}
+
+\begin{exercise}\label{exer:zeromult}\markit
+Prove part {\itshape(\ref{thrm:zeromult})} of Theorem \ref{thrm:algebra}.
+\answer{{\bfseries \ref{exer:zeromult})} Hint: Show that $a+a\cdot 0=a$, then apply Theorem \ref{thrm:algebra}({\itshape \ref{thrm:addcanc}})}
+\end{exercise}
+
+\begin{exercise}
+Prove part {\itshape(\ref{thrm:zerofactor})} of Theorem \ref{thrm:algebra}.
+\end{exercise}
+
+\begin{exercise}
+Use the field axioms to show that $-0=0$ and $1^{-1}=1$.
+\end{exercise}
+
+\begin{exercise}
+Prove that $(-a)b=-(ab)=a(-b)$ for all real numbers $a$ and $b$.
+\end{exercise}
+
+\begin{exercise}
+Use the field axioms and Theorem \ref{thrm:algebra} to show that for any $a\in\mathbb R$, $(-a)(-a)=a^2$.
+\end{exercise}
+
+\begin{exercise} \label{ex:orderprod}\markit
+If $a>b\geq0$ and $c>d\geq0$, prove that $ac>bd$.
+\answer{{\bfseries \ref{ex:orderprod})} Hint: Use $c>0$ to show that $ac>bc$, then compare $bc$ and $bd$ by considering two cases: $b>0$ or $b=0$.}
+\end{exercise}
+
+\begin{exercise}
+If $a$ and $b$ are nonzero real numbers and $a<b$, prove that $b^{-1}<a^{-1}$. 
+\end{exercise}
+
+\begin{exercise}
+Complete the proof of part {\itshape(\ref{thrm:posneg})} of Theorem
+\ref{thrm:orderbasic} by showing that if $a<0$, then $-a>0$.
+\end{exercise}
+
+\begin{exercise}
+Prove part {\itshape(\ref{thrm:possqr})} of Theorem \ref{thrm:orderbasic}.
+\end{exercise}
+
+\begin{exercise}
+Prove part {\itshape(\ref{thrm:onegtzero})} of Theorem \ref{thrm:orderbasic}.
+\end{exercise}
+
+\begin{exercise}
+Prove Theorem \ref{thrm:orderprod}.
+\end{exercise}
+
+\begin{exercise}
+Prove part {\itshape(\ref{thrm:orderrecipneg})} of Theorem \ref{thrm:orderrecip}.
+\end{exercise}
+
+\begin{exercise}\label{exer:uniqueLUB}
+Prove Theorem \ref{thrm:uniquelub}.
+\end{exercise}
+
+\begin{exercise}
+Prove that if $u$ is an upper bound for $A$ and $u\in A$, then $u$ is the least upper bound for $A$.
+\end{exercise}
+
+\begin{exercise}
+Show that every nonempty subset of $\mathbb R$ with a lower bound has a greatest lower bound.
+\end{exercise}
+
+\begin{exercise}
+Let $A$ and $B$ be two nonempty subsets of $\mathbb R$ such that $A\cup B=\mathbb R$. If $A$ and $B$ satisfy the further property that $a<b$ for every $a\in A$ and $b\in B$, then $A$ and $B$ form a \emph{Dedekind cut}\index{Dedekind Cut} of $\mathbb R$. The Completeness Axiom\index{completeness axiom} is sometimes replaced with Dedekind's Axiom, which says that given any Dedekind cut of $\mathbb R$, either $A$ has a largest element or $B$ has a smallest element.  Assuming the field and order axioms for $\mathbb R$, as well as their consequences, prove the following:
+\begin{enumerate}
+\item The Completeness Axiom implies Dedekind's Axiom. 
+\item Dedekind's Axiom implies the Completeness Axiom.
+\end{enumerate}
+\end{exercise}
+
+\clearpage

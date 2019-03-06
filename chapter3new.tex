@@ -1,0 +1,481 @@
+\chapter{Set Theory}
+
+\begin{chapqt}{Henri Poincar\'e}
+Later mathematicians will regard set theory as a disease from which we have recovered.
+\end{chapqt}
+
+\begin{chapqt}{David Hilbert}
+\ldots No one shall be able to drive us from the paradise that Cantor created for us.
+\end{chapqt}
+
+\section*{Introduction}
+
+After the work of Newton and Leibniz in the early 18th century, there was rapid progress in analysis and the theory of functions. In the 19th century, mathematicians began to find examples that challenged their intuitive understanding of functions, continuity, and infinite series. The work of Cantor, Dedekind, Weierstrass, and others in the last half of the 19th century eventually allowed all of mathematics to be based on a common foundation.  Based on the ideas and insights of Georg Cantor, the new theory of sets was not immediately accepted by all mathematicians of the day.  The most serious problem was that Cantor treated infinite sets as objects and defined operations on those objects.  Gauss, Poincar\'e,  and Kronecker were among the mathematical greats who attacked set theory, sometimes in a particularly vicious and personal way. Other mathematicians, notably Weierstrass and Dedekind, were early supporters of Cantor's work. Cantor was unable to obtain a position at any of Germany's prestigious research universities and spent his entire 44 year academic career in a relatively minor position. Distraught over continuing resistance to his work, Cantor had a breakdown and spent the last years of his life in a mental institution.
+
+\section{What is a Set?}
+
+\subsection{Naive set theory}\index{naive set theory}
+
+Early work with sets assumed only that any collection that could be clearly specified (there is a rule for determining whether or not something is in the collection) could be considered a set, and that two sets were the same if they contained the same elements. These properties are sufficient to allow most mathematicians to study the groups or fields or topological spaces they are interested in.  The finer points of what actually is, or is not, a set just don't come up most of the time. A mathematician should be aware, however, that there are in fact some restrictions.  Perhaps the most important is that sets are not allowed to be elements of themselves. 
+
+\subsection{Russell's Paradox}
+
+In 1902, philosopher and mathematician Bertrand Russell published his famous paradox.\index{Russell's paradox}  Closely related to the Liar's Paradox, Russell's Paradox exploits a form of self-reference.  More specifically, the paradox works only if we allow the possibility that a set might be an element of itself.  To avoid this kind of problem, we will not allow any set to be an element of itself.  We will talk more about Russell's version of this paradox later, but for now let's deal with a popularization that doesn't depend so much on the language of sets.
+
+\begin{example}\label{eg:barber}
+{\bf The Barber's Paradox.} A certain small town has only one barber. He shaves only those men in town who do not shave themselves. Who shaves the barber?
+\end{example}
+
+\section{Elements and Subsets}
+
+\subsection{Elements}
+
+We will think of a set as a collection of objects, called it's \emph{elements}.\index{sets!elements}  These objects might be points, numbers, people, kitchen appliances, other sets, or any other objects we are interested in talking about.  For a set to be well-defined, we must have a way to determine whether or not a given object is in the set.  We consider two sets to be equal if they contain exactly the same elements.  Note that an object is either an element of a set or not, the elements of a set do not occur in a particular order and the same object cannot be an element
+of the set more than once.
+
+One way to indicate a set is to simply list all of the elements between set braces $\{$ and $\}$.  The set of positive integers less than 3 is $\{1,2\}$.  We will find it useful to have a special notation for the set which has no elements.  To this end, let $\emptyset=\{ \}$.
+
+\begin{example}
+Let $A=\{ 1,2,4,8\}$, $B=\{ 8, 2, 1, 4\}$, $C=\{1,2,1,4,8\}$, and $D=\{1,2,3,4,8\}$.  Of these sets, $A=B=C$ because they each contain the same elements.  It doesn't matter that we listed the elements in a different order when we defined $A$ than when we defined $B$, or that we listed $1$ as an element of $C$ more than once.  The set $D$ is different from the others since it contains the element $3$ and the other sets do not.
+\end{example}
+
+\begin{example}
+Let $X=\bigl\{1,2,\{2\}\bigr\}$. Note that this set contains some elements that are numbers and some elements that are sets of numbers. We consider those different objects. For example $1$ is an element of $X$, but $\{1\}$ is not an element of $X$. On the other hand, both $2$ and $\{2\}$ are elements of $X$.
+\end{example}
+
+We indicate that the object $x$ is an element of the set $A$ by writing $x\in A$.  We write $x\notin A$ if $x$ is not an element of $A$. Listing all of the elements of a set works well when the set contains only a few elements, but what about sets with many elements?  In this case, we use \emph{set builder}\index{sets!set builder notation} notation to denote the set.  An important part of this notation is the use of the vertical bar $\mid$ (some texts use a colon in place of the vertical bar), read ``such that.''  So the set $A=\{ x\mid x^2-2=0\}$ is read ``the set of all elements $x$ such that $x^2-2=0$.''  An object will be an element of this set if and only if it satisfies the equation $x^2-2=0$.
+
+There are also a few sets that are useful enough to deserve their ownspecial notation.  In particular, $\mathbb N$ denotes the set of natural numbers, $\mathbb Z$ the set of integers, $\mathbb Q$ the set of rational numbers, $\mathbb R$ the set of real numbers, and $\mathbb C$ the set of complex numbers.
+
+\subsection{Subsets}
+
+\begin{definition}
+Given two sets $A$ and $B$ we say that $A$ is a \emph{subset}\index{subset|textbf} of $B$, or that $A$ is contained in $B$, if every element of $A$ is also an element of $B$.  In this case we write $A\subset B$ (sometimes $A\subseteq B$).
+\end{definition}
+
+Since every natural number is also an integer and every integer is a real number, $\mathbb N\subset Z$ and $\mathbb Z\subset R$.
+
+\begin{example}
+Define  the sets $A=\{1,2,3\}$, $B=\bigl\{1,2,\{3\},4\bigr\}$, and $C=\bigl\{1,2,3,\{4\}\bigr\}$. Then $A$ is a subet of $C$ because each element of $A$ is also an element of $C$. Note that $A$ is not a subset of $B$ because $3$ is an element of $A$, but not an element of $B$ - remember that $3$ and $\{3\}$ are different objects.
+\end{example}
+
+Given any set $A$, it is certainly true that every element of $A$ is an
+element of $A$.  In other words, every set is a subset of itself.  Note
+also that the empty set is a subset of every set $A$ since there are no
+elements of the empty set which are not in $A$.  
+
+\begin{definition}
+A subset $B$ of $A$ is said to be a \emph{proper subset} \index{subset!proper} of $A$ if $B\neq\emptyset$ and $B\neq A$.
+\end{definition}
+
+\begin{thrm}\label{sets:transitivity}
+If $A\subset B$ and $B\subset C$, then $A\subset C$.
+\end{thrm}
+
+\begin{proof}
+Suppose that $a\in A$.  Since $A\subset B$ it follows that $a\in B$. Now
+$B\subset C$, so we may say that $a\in C$ as desired.
+\end{proof}
+
+The preceding proof is a simple example of a direct proof.\index{proof!direct}  Let's pause for a moment and analyze this proof.  The statement we want to prove is a universally quantified statement about elements of $A$: every element of $A$ is also an element of $C$.  We begin by considering an arbitrary element of $A$, which we have named $a$.  The goal is to use our
+hypotheses ($A\subset B$ and $B\subset C$) to arrive at the conclusion that $a\in C$.  First we note that every element of $A$ is also an element of $B$ since $A\subset B$.  This allows us to state that $a\in B$.  Once we have $a\in B$ we may use the second hypothesis to see that $a\in C$ since $B\subset C$.  So starting with any element at all of the set $A$ we have shown that it must also be an element of $C$, which is the definition of $A\subset C$.  We conclude that $A\subset C$ as desired.
+
+Note that the preceding proof is a syllogism:\index{syllogism}  {\sl All elements of $A$ are elements of $B$.  All elements of $B$ are elements of $C$.  Hence all elements of $A$ are elements of $C$.\/}  This is certainly not true of all direct proofs, but is true on occasion.
+
+\subsection{Universal sets}
+
+In many instances, all of the sets we may be interested in are subsets of some particular set $U$.  In this case we say that $U$ is a \emph{universal set},\index{sets!universal} or that $U$ is the \emph{universe}.\index{universe|textbf}  For example, all of the functions we study in single variable calculus have domains and ranges that are subsets of the universal set $\mathbb R$.
+
+\subsection{Equality of sets}
+
+We say that two sets are equal\index{sets!equal} if they contain exactly the same elements.  In other words, $A=B$ means that every element of $A$ is an element of $B$ and every element of $B$ is an element of $A$. In other words, we have the following:
+
+\begin{thrm}\label{sets:equality}
+Given any two sets $A$ and $B$, $A=B$ if and only if $A\subset B$ and $B\subset A$.
+\end{thrm}
+
+\noindent
+This theorem will become one of our most valuable tools for showing that two sets are equal.
+
+\section{Operations on Sets}
+
+\subsection{Union and intersection}
+
+\begin{definition}
+The \emph{union}\index{union|textbf} of two sets $A$ and $B$ is the set: \[ A\cup B=\{ x\mid (x\in A)\lor(x\in B)\}\]
+\end{definition}
+
+\begin{definition}
+The \emph{intersection}\index{intersection|textbf} of $A$ and $B$ is the set: \[ A\cap B=\{ x\mid (x\in A)\land(x\in B)\}\]
+\end{definition}
+
+\noindent
+Before proceding we note that $P\lor Q$ is equivalent to $Q\lor P$, so it follows immediately from our definition that $A\cup B=B\cup A$. Similarly we have $A\cap B=B\cap A$ since $P\land Q$ is equivalent to $Q\land P$.
+
+\begin{example}
+Define $A=\{ 1,2,3,4,5\}$ and $B=\{ 2,4,6,8,10\}$.  Then \[A\cup B=\{
+1,2,3,4,5,6,8,10\} \hbox{ and } A\cap B=\{ 2,4\}.\]
+\end{example}
+
+The following theorem summarizes several useful algebraic properties of unions and intersections.
+\index{commutative law|(}
+\index{associative law|(}
+\index{distributive law|(}
+\index{idempotence|(}
+\index{identities|(}
+\begin{thrm}\label{sets:basics}
+Let $A$, $B$, and $C$ be any sets in the universal set $U$.  Then:
+\begin{enumerate}
+\item (Commutative Laws)
+\begin{enumerate}
+\item $A\cup B=B\cup A$
+\item $A\cap B=B\cap A$
+\end{enumerate}
+
+\item\label{basics:assoc} (Associative Laws)
+\begin{enumerate}
+\item $A\cup (B\cup C)=(A\cup B)\cup C$
+\item $A\cap (B\cap C)=(A\cap B)\cap C$
+\end{enumerate}
+
+\item\label{basics:distr} (Distributive Laws)
+\begin{enumerate}
+\item $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$
+\item $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$
+\end{enumerate}
+
+\item\label{basics:idem} (Idempotence)
+\begin{enumerate}
+\item $A\cup A=A$
+\item $A\cap A=A$
+\end{enumerate}
+
+\item\label{basics:ident} (Identities)
+\begin{enumerate}
+\item $A\cup\emptyset=A$
+\item $A\cap U=A$
+\end{enumerate}
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}[Proofs.] We prove some of these properties here and leave the remainder for the exercises. 
+
+\paragraph{Commutative Laws.} The Commutative Laws follow immediately from our defintions as noted in the text.
+
+\paragraph{Associative Laws.} We prove the Associative Law for unions here. Rather than applying Theorem \ref{sets:equality}, we show that $(x\in A\cup(B\cup C)$ is equivalent to $x\in(A\cup B)\cup C$ using the associativity of disjunction at $(*)$
+\begin{equation*}
+\begin{split}
+x\in A\cup(B\cup C) &\Leftrightarrow (x\in A) \lor (x\in B\cup C)\\
+&\Leftrightarrow (x\in A) \lor \bigl( (x\in B)\lor (x\in C)\bigr)\\
+&\Leftrightarrow \bigl( (x\in A)\lor (x\in B)\bigr) \lor (x\in C) \qquad (*)\\
+&\Leftrightarrow (x\in A\cup B) \lor (x\in C)\\
+&\Leftrightarrow x\in (A\cup B)\cup C\\
+\end{split}
+\end{equation*}
+
+\paragraph{Distributive Laws.} We show that union distributes over intersection using the fact that disjunction distributes over conjunction at $(**)$.
+\begin{equation*}
+\begin{split}
+x\in A\cup(B\cap C) &\Leftrightarrow (x\in A) \lor (x\in B\cap C)\\
+&\Leftrightarrow (x\in A) \lor \bigl( (x\in B)\land (x\in C)\bigr)\\
+&\Leftrightarrow \bigl((x\in A)\lor (x\in B)\bigr)\land\bigl((x\in A)\lor (x\in C)\bigr) \qquad (**)\\
+&\Leftrightarrow (x\in A\cup B) \land (x\in A\cup C)\\
+&\Leftrightarrow x\in (A\cup B)\cap(A\cup C)\\
+\end{split}
+\end{equation*}
+
+\paragraph{Idempotence.} We prove that $A\cap A=A$. This time we make use of Theorem \ref{sets:equality}. Assume first that $x\in A\cap A$, then by definition $x\in A$ and $x\in A$. From this we may deduce that $x\in A$. Since this is true for every $x\in A\cap A$, we have shown that $A\cap A\subset A$.  Now assume that $y\in A$, then we have $y\in A$ and $y\in A$. It follows that $y\in A\cap A$ for every $y\in A$, so $A\subset A\cap A$. We now apply Theorem \ref{sets:equality} to see that $A\cap A=A$.
+
+\paragraph{Identities.} We prove here that $A\cup\emptyset=A$. Assume first that $x\in A\cup\emptyset$, then $x\in A$ or $x\in\emptyset$. By definition we know that $x\notin\emptyset$, so it follows that $x\in A$.\footnote{Which rule of inference allows us to deduce that $x\in A$?} We have shown that $A\cup\emptyset\subset A$. Now suppose that $y\in A$, then we may deduce that $y\in A$ or $y\in\emptyset$. By definition it follows that $y\in A\cup\emptyset$ and we have shown that $A\subset A\cup\emptyset$. We may now apply Theorem \ref{sets:equality} to see that $A\cup \emptyset=A$ as desired.
+\end{proof}
+\index{commutative law|)}
+\index{associative law|)}
+\index{distributive law|)}
+\index{idempotence|)}
+\index{identities|)}
+
+\subsection{Complements}
+
+\begin{definition}
+The \emph{relative complement}\index{complement|textbf} of \index{relative complement|see {complement}} $B$ in $A$ (also called the set difference) is the set: \[ A\setminus B=\{ a\mid a\in A \hbox{ and } a\notin B\}\]  In a given universe $U$, we may also define the \emph{complement} of a set $A$ to be the set: \[A'=U\setminus A\]
+\end{definition}
+
+\begin{thrm}[DeMorgan]\label{thrm:DeMorgan}\index{DeMorgan's Laws|textbf}
+Let $A$, $B$, and $C$ be sets.  Then:
+\begin{enumerate}
+\item $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$, and
+\item $A\setminus(B\cap C)=(A\setminus B)\cup(A\setminus C)$.
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}[Proof of Theorem \ref{thrm:DeMorgan}(i).]
+Rather than using Theorem \ref{sets:equality} we use Theorem
+\ref{thrm:DeM} to show that an element is in $A\setminus(B\cup C)$
+if and only if it is in $(A\setminus B)\cup(A\setminus C)$.
+\begin{equation*}
+\begin{split}
+x\in A\setminus(B\cup C) &\Leftrightarrow (x\in A)\land (x\notin B\cup
+C) \\
+&\Leftrightarrow (x\in A)\land \neg(x\in B \lor x\in C) \\
+&\Leftrightarrow (x\in A)\land \bigl( \neg (x\in B)\land \neg (x\in
+C)\bigr) \\
+&\Leftrightarrow (x\in A)\land (x\notin B)\land (x\notin C) \\
+&\Leftrightarrow \bigl( (x\in A)\land (x\notin B)\bigr) \land \bigl(
+(x\in A)\land (x\notin C)\bigr) \\
+&\Leftrightarrow (x\in A\setminus B)\land (x\in A\setminus C) \\
+&\Leftrightarrow x\in (A\setminus B)\cap (A\setminus C) \\
+\end{split}
+\end{equation*}
+\end{proof}
+
+\subsection{Cartesian products}
+
+\begin{definition}
+The \emph{(Cartesian) product}\index{cartesian product|textbf} of two sets $A$ and $B$ is the set: \[A\times B=\{ (a,b) \mid a\in A \text{ and } b\in B\}\text{,}\] where $(a,b)$ denotes an ordered pair, not an interval.
+\end{definition}
+
+Note that $A\times B$ is simply the set of all ordered pairs with first coordinates in $A$ and second coordinates in $B$.  For example, the Cartesian plane used in Calculus is the set ${\mathbb R}\times{\mathbb R}$.
+
+\begin{thrm}\label{thrm:products}
+For any sets $A$, $B$, and $C$:
+\begin{enumerate}
+\item $(A\cup B)\times C=(A\times C)\cup(B\times C)$
+\item $(A\cap B)\times C=(A\times C)\cap(B\times C)$
+\item $(A\setminus B)\times C=(A\times C)\setminus(B\times C)$
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}[Proof of Theorem \ref{thrm:products}(i).]
+First suppose that $(x,y)\in (A\cup B)\times C$.  By definition we have
+$x\in A\cup B$ and $y\in C$.  Since $x\in A\cup B$, either $x\in A$ or
+$x\in B$.  If $x\in A$, then we have $x\in A$ and $y\in C$, so $(x,y)\in
+A\times C$. If $x\in B$, then we have $x\in B$ and $y\in C$, so
+$(x,y)\in B\times C$.  We can now say that $(x,y)\in A\times C$ or
+$(x,y)\in B\times C$, so $(x,y)\in(A\times C)\cup(B\times C)$.  Hence
+$(A\cup B)\times C\subset (A\times C)\cup(B\times C)$.
+
+To see that the converse is true, suppose that $(x,y)\in (A\times
+C)\cup(B\times C)$.  Either $(x,y)\in A\times C$ or $(x,y)\in B\times
+C$.  If $(x,y)\in A\times C$, then $x\in A\subset (A\cup B)$ and $y\in
+C$, so $(x,y)\in(A\cup B)\times C$. If $(x,y)\in B\times C$, then $x\in
+B\subset (A\cup B)$ and $y\in C$, so $(x,y)\in(A\cup B)\times C$.  Hence
+$(A\times C)\cup(B\times C) \subset (A\cup B)\times C$.  Therefore,
+$(A\cup B)\times C=(A\times C)\cup(B\times C)$ as desired.
+\end{proof}
+
+Since $A\times B$ is a set of ordered pairs, $A\times B\neq B\times A$.
+You should make sure that you look at an example to understand why this
+is true.  This requires us to state another theorem that seems very
+similar to the last one.  The proof of the following theorem involves
+making obvious changes to the previous proof and checking that all of
+the details still work.
+
+\begin{thrm}
+For any sets $A$, $B$, and $C$:
+\begin{enumerate}
+\item $A\times (B\cup C)=(A\times B)\cup(A\times C)$
+\item $A\times (B\cap C)=(A\times B)\cap(A\times C)$
+\item $A\times (B\setminus C)=(A\times B)\setminus(A\times C)$
+\end{enumerate}
+\end{thrm}
+
+It may be tempting to assume that we could combine these two theorems
+somehow and obtain statements like $(A\times B) \setminus (C\times D)=
+(A\setminus C) \times (B\setminus D)$.  This statement is generally false,
+however, as shown by the following.
+
+\begin{example}
+Let $A=\{ 1,2,3\}$, $B=\{5,6\}$, $C=\{1,2\}$, and $D=\{6\}$.  Then:
+\[(A\times B)\setminus(C\times D)= \{(1,5), (2,5), (3,5), (3,6)\}\]
+but
+\[(A\setminus C)\times(B\setminus D)= \{(3,5)\}\]
+\end{example}
+
+\section{Collections of Sets}
+
+Some of the structures used in pure mathematics require the use of sets whose elements are other sets.  It is customary, though not necessary, to refer to these kinds of sets as collections of sets.  When working with sets and collections of sets, it can be particularly confusing to keep track of which set is an element of which other set, as opposed to being a subset.
+
+\subsection{The power set of a set}
+
+\begin{definition}
+Let $A$ be any set.  The \emph{power set}\index{power set|textbf} of $A$ is the set ${\cal P} (A)=\{ B\mid B\subset A\}$. 
+\end{definition}
+
+In words, the power set of $A$ is the set whose elements are the subsets of $A$.  Note that for any set $A$ we have $\emptyset\in{\cal P}(A)$ and $A\in{\cal P}(A)$, so ${\cal P}(A)$ is nonempty for every set $A$.  The power set of $A$ is frequently denoted $2^A$.
+
+\begin{thrm}\label{power:subsets}
+For any sets $A$ and $B$, $A\subset B$ if and only if ${\cal
+P}(A)\subset {\cal P}(B)$.
+\end{thrm}
+
+\begin{proof}
+First assume that $A\subset B$ and let $X\in{\cal P}(A)$.  By definition
+$X\subset A$, so Theorem \ref{sets:transitivity} implies that $X\subset
+B$.  Hence $X\in{\cal P}(B)$ and ${\cal P}(A)\subset{\cal P}(B)$.
+Conversely, if we assume that ${\cal P}(A)\subset {\cal P}(B)$, then
+$A\in{\cal P}(A)\subset{\cal P}(B)$ and $A\subset B$ by definition.
+\end{proof}
+
+\begin{thrm}\label{power:intersection}
+For any sets $A$ and $B$, ${\cal P}(A\cap B)={\cal P}(A)\cap{\cal P}(B)$.
+\end{thrm}
+
+\begin{proof}
+First note that $A\cap B\subset A$ by Exercise \ref{sets:containment},
+so Theorem \ref{power:subsets} implies that ${\cal P}(A\cap B)\subset
+{\cal P}(A)$.  The same reasoning shows that ${\cal P}(A\cap B)\subset
+{\cal P}(B)$, so we have ${\cal P}(A\cap B)\subset{\cal P}(A)\cap {\cal
+P}(B)$ by Exercise \ref{sets:intersections}.
+
+Now suppose that $X\in{\cal P}(A)\cap {\cal P}(B)$, then $X\in{\cal
+P}(A)$ and $X\in {\cal P}(B)$.  By definition $X\subset A$ and $X\subset
+B$, so $X\subset A\cap B$ by Exercise \ref{sets:intersections}.  It
+follows that ${\cal P}(A\cap B)\supset{\cal P}(A)\cap {\cal P}(B)$, so
+${\cal P}(A\cap B)={\cal P}(A)\cap {\cal P}(B)$ as desired.
+\end{proof}
+
+\clearpage
+
+\section*{Chapter \arabic{chapter} Exercises}
+\addcontentsline{toc}{section}{\protect\numberline{}Chapter \arabic{chapter} Exercises}
+\anschapter
+
+\begin{exercise}
+Explain why there is no consistent answer to the question in Example
+\ref{eg:barber}.
+\end{exercise}
+
+\begin{exercise}
+Here are some common infinite sets:\\
+$P=\{ n\mid n \textrm{ is prime}\}$ is the set of all prime numbers.\\
+$E=\{ n\mid n=2k \textrm{ for some } k\in{\mathbb Z}\}$ is the set of
+all even integers.
+
+How would you write the set of all odd integers in set builder notation?
+What about the set of all integer powers of $2$? 
+\end{exercise}
+
+\begin{exercise}\label{exer:subsets}
+Let $A=\bigl\{ 1,2,\{1,2\},\{1,3\},4 \bigr\} $. Determine whether each of the following is en element of $A$, a subset of $A$, both an element of $A$ and a subset of $A$, or neither an element of $A$ nor a subset of $A$.
+\begin{enumerate}
+\item $1$
+\item\label{subsets:first} \markit $3$
+\answer{{\bfseries \ref{exer:subsets}(\ref{subsets:first})} The number $3$ is neither an element of $A$ nor a subset of $A$.}
+\item $\{1\}$
+\item $\{1,2\}$
+\item $\{1,3\}$
+\item\label{subsets:second}\markit $\{1,4\}$
+\answer{{\bfseries \ref{exer:subsets}(\ref{subsets:second})} The set $\{1,4\}$ is a subset of $A$ since $1$ and $4$ are both elements of $A$.}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Let $A$ and $B$ be sets and suppose you know that $A$ is not a subset of $B$. Which of the following is necessarily true? Choose all correct responses.
+\begin{enumerate}
+\item If $x\in A$, then $x\notin B$.
+\item If $x\in B$, then $x\in A$.
+\item There is an element $x\in A$ so that $x\notin B$.
+\item There is an element $x\in B$ so that $x\notin A$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Let $A$ and $B$ be sets and suppose that $x\notin A\cup B$. Which of the following is necessarily true? Choose all correct responses.
+\begin{enumerate}
+\item $x\notin A$ or $x\notin B$
+\item $x\notin A$ and $x\notin B$
+\item $x\in A$ or $x\in B$
+\item $x\in A$ and $x\in B$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:negint}
+\markit Let $A$ and $B$ be sets and suppose that $x\notin A\cap B$. Which of the following is necessarily true? Choose all correct responses.
+\begin{enumerate}
+\item $x\notin A$ or $x\notin B$
+\item\label{negint:correct} $x\notin A$ and $x\notin B$
+\item $x\in A$ or $x\in B$
+\item $x\in A$ and $x\in B$
+\end{enumerate}
+\answer{{\bfseries \ref{exer:negint})} The only choice that is necessarily correct is (\ref{negint:correct}).} 
+\end{exercise}
+
+\begin{exercise}
+Define the following sets: $A=\{1,3,9,27\}$, $B=\{1,2,4,8\}$, $P=\{
+n\mid n \hbox{ is a prime integer}\}$, and $E=\{ n\mid n=2k \hbox{ for
+some } k\in{\mathbb N}\}$. Find each of the following:
+\begin{enumerate}
+\item $A\cup B$
+\item $A\cap B$
+\item $P\cap E$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:basics}
+Prove the following parts of Theorem \ref{sets:basics}.
+\begin{enumerate}
+\item Theorem \ref{sets:basics} \ref{basics:assoc} (b)
+\item Theorem \ref{sets:basics} \ref{basics:distr} (b)
+\item Theorem \ref{sets:basics} \ref{basics:idem} (a)
+\item Theorem \ref{sets:basics} \ref{basics:ident} (b)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{sets:containment}
+For any sets $A$ and $B$, prove that:
+\begin{enumerate}
+\item\label{containment:un}\markit $A\subset A\cup B$
+\answer{{\bfseries \ref{sets:containment}(\ref{containment:un})} Show that if $x\in A$, then $x\in A\cup B$.}
+\item $A\cap B\subset A$
+\item $A\cap\emptyset=\emptyset$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{sets:intersections}
+Let $A$, $B$, and $C$ be sets.  Prove that $A\subset B\cap C$ if and
+only if $A\subset B$ and $A\subset C$.
+\end{exercise}
+
+\begin{exercise}
+Let $A$, $B$, and $C$ be sets.  Prove that if $A\subset B\cup C$ and
+$A\cap B=\emptyset$, then $A\subset C$.
+\end{exercise}
+
+\begin{exercise}
+Prove part (ii) of Theorem \ref{thrm:DeMorgan}.
+\end{exercise}
+
+\begin{exercise}
+Let $A$ and $B$ be sets in a universal set $U$.  Prove the following:
+\begin{enumerate}
+\item $A\setminus B=A\cap B'$
+\item $A\setminus B=A$ if and only if $A\cap B=\emptyset$.
+\item $A\setminus B=\emptyset$ if and only if $A\subset B$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} Prove the following:
+\begin{enumerate}
+\item Theorem \ref{thrm:products}(ii)
+\item Theorem \ref{thrm:products}(iii)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Determine whether or not each of the following is true.  If so, provide
+a proof.  If not, provide a counterexample.
+\begin{enumerate}
+\item $(A\cup B)\times(C\cup D)=(A\times C)\cup(B\times D)$
+\item $(A\cap B)\times(C\cap D)=(A\times C)\cap(B\times D)$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{power:union}
+Let $A$ and $B$ be sets.
+\begin{enumerate}
+\item\label{union:true} Show that ${\cal P}(A)\cup {\cal P}(B)\subset {\cal P}(A\cup B)$.
+\item Show that ${\cal P}(A\cup B)$ is not generally a subset of ${\cal P}(A)\cup{\cal P}(B)$.
+\end{enumerate}
+\end{exercise}
+
+\clearpage

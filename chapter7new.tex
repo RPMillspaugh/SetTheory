@@ -1,0 +1,385 @@
+\chapter{Introduction to Cardinality}
+
+\begin{chapqt}{Danica McKellar}
+One of the most amazing things about mathematics is the people who do math aren't usually interested in application, because mathematics itself is truly a beautiful art form. It's structures and patterns, and that's what we love, and that's what we get off on.
+\end{chapqt}
+
+\begin{chapqt}{The Red Queen}
+Why, sometimes I've believed as many as six impossible things before breakfast.
+\end{chapqt}
+
+\section*{Introduction}
+
+What do we mean when we say that there are \emph{four} suits in a standard deck of cards?  More generally, what does it mean to count any collection of objects?  Since you may no longer actually think about counting, it may help to watch a child who is just learning to count. Given four objects to count, the child is likely to point to each object in turn and count ``one, two, three, four.''  In other words, the child is explicitly constructing a bijective\index{function!bijective} function between the objects she is counting\index{counting} and the elements of the set $\{1,2,3,4\}$.  Our goal in this chapter is to extend this idea to infinite sets.
+
+\section{The Cardinality of a Set}
+
+Let $A$ and $B$ be two sets.  We define the relation $\equiv$ by $A\equiv B$ if there is a bijective function $f:A\to B$.  In this case we say that $A$ and $B$ are \emph{equinumerous} \index{equinumerous|textbf} or that they have the same \emph{cardinality}.\index{cardinality|textbf} We define $A\preceq B$ to mean that there is an injective function $f:A\to B$.  We may also write this as $B\succeq A$. We write $A\prec B$ to indicate that $A\preceq B$ and $A\not\equiv B$. Note: it is fairly common to use the notation $|A|=|B|$ rather than $A\equiv B$.
+
+\begin{thrm}\label{thrm:card}
+The relation $\equiv$ defined above is an equivalence relation.\index{equivalence relation}
+\end{thrm}
+
+\begin{proof}
+Let $A$, $B$, and $C$ be arbitrary sets.
+
+Since the identity function on any set is a bijection, $A\equiv A$ and $\equiv$ is reflexive.
+
+If $A\equiv B$, then there is a bijection $f:A\to B$.  Applying Theorem \ref{thrm:invert}, the function $f$ is invertible.  By Exercise \ref{ex:inverses} the inverse function $f^{-1}:Y\to X$ is a bijection. Hence $B\equiv A$ and $\equiv$ is symmetric.
+
+To see that $\equiv$ is transitive, suppose that $A\equiv B$ and $B\equiv C$. By definition there are bijective functions $f:A\to B$ and $g:B\to C$. Now apply Corollary \ref{coro:compbij} to see that $g\cmps f:A\to C$ is a bijective function.  Hence $A\equiv C$ and $\equiv$ is transitive. Therefore, $\equiv$ is an equivalence relation as desired.
+\end{proof}
+
+Note that Theorem \ref{thrm:card} allows us to say that two sets $A$ and $B$ have the same cardinality if we are able to find a bijection from $A$ to $B$ or a bijection from $B$ to $A$.
+
+\begin{thrm}\label{thrm:ordering}
+The relation $\preceq$ is reflexive\index{relation!reflexive} and transitive.\index{relation!transitive}
+\end{thrm}
+
+\begin{proof}
+Let $A$, $B$, and $C$ be any sets.  Since the identity function on any set is injective, $A\preceq A$ and $\preceq$ is reflexive.  To see that $\preceq$ is transitive, suppose that $A\preceq B$ and $B\preceq C$.  By definition there are injections $f:A\to B$ and $g:B\to C$.  We apply Theorem \ref{thrm:comps} to see that the composition $g\cmps f:A\to C$ is also injective, hence $A\preceq C$ as desired.
+\end{proof}
+
+While we would probably not expect $\preceq$ to be symmetric, it wouldn't be too surprising if it was antisymmetric.\index{relation!antisymmetric}  If $A\preceq B$ and $B\preceq A$, does it follow that $A\equiv B$?  Georg Cantor (1845-1918) was interested in just this question.  One of his doctoral students, Felix Bernstein (1878-1956) was able to prove that the answer is yes. The resulting theorem is usually known as the Cantor-Bernstein Theorem.\index{Cantor-Bernstein Theorem}
+
+\begin{thrm}[Cantor-Bernstein]\label{thrm:CB}
+If $A\preceq B$ and $B\preceq A$, then $A\equiv B$.
+\end{thrm}
+
+We defer the proof of this theorem to the Appendix.  The following example uses the same ideas as the proof in order to construct a bijection between the open interval $(-1,1)$ and the closed interval $[-1,1]$.
+
+\begin{example}\label{ex:openclosed}
+Define the functions $f:(-1,1)\to[-1,1]$ and $g:[-1,1]\to(-1,1)$ by $f(x)=x$ and $g(x)=x/2$, respectively.  It is easy to show that both of these functions are injective, so $(-1,1)\preceq[-1,1]$ and $[-1,1]\preceq(-1,1)$.  The Canter-Bernstein Theorem implies that there must be a bijection between the open interval $(-1,1)$ and the closed interval $[-1,1]$, but the theorem itself doesn't tell us how to find such a bijection.  We construct such a bijection here.
+
+We wish to find a bijective function $h:(-1,1)\to[-1,1]$.  For most elements $x\in(-1,1)$ we want $h(x)=f(x)=x$.  Unfortunately, if we let $h(x)=f(x)$ for all $x$, then the function is not bijective because $-1\neq f(x)$ and $1\neq f(x)$ for all $x\in(-1,1)$.  We use the function $g$ to help us fix this problem.  Consider first the element $1\in[-1,1]$.  While $1\neq f(x)$ for any $x$, there is an element of the open interval associated with $1$ by $g$.  In particular $g(1)=1/2$. We could define $h$ so that $h(1/2)=1$ and $h(x)=f(x)$ for other $x\in(-1,1)$, but that creates a new problem.  Now $1$ is in the image of the function, but $1/2$ is not.  To fix this we let $h(1/4)=1/2$, because $g(1/2)=1/4$.  Of course, now $1/4$ is not in the image of $h$.
+We continue fixing one problem at a time using $g$, each time creating a new problem.  Naturally, we will need to do the same with $-1$.
+
+These particular functions are simple enough that we can write down a formula for the function $h$ that we end up with.  We end up defining $h:(-1,1)\to[-1,1]$ by \[h(x)=
+\begin{cases}
+2^{-(n-1)} & \hbox{if }\ x=2^{-n} \hbox{\ for some}\ n\in\mathbb N\\
+-2^{-(n-1)} & \hbox{if }\ x=-2^{-n} \hbox{\ for some}\ n\in\mathbb N\\
+x & \hbox{otherwise}\\
+\end{cases}\]
+We claim that this function is the desired bijection.
+
+We first show that $h$ is surjective.  To see this, let $t\in[-1,1]$. If $t=2^{-(n-1)}$ for some $n\in\mathbb N$, then $h(2^{-n})=t$. If $t=-2^{-(n-1)}$ for some $n\in\mathbb N$, then $h(-2^{-n})=t$. For any other $t\in[-1,1]$ we have $h(t)=t$.  In any case $t=h(x)$ for some $x\in(-1,1)$, so $h$ is surjective.
+
+To see that $h$ is injective, suppose that $x\neq y$ are both elements of $(-1,1)$.  We consider several cases.
+
+\smallbreak\noindent
+{\rm Case 1. $x=2^{-n}$, $y=2^{-k}$ for some $n,k\in\mathbb N$.\/} Since $x\neq y$, it follows that $n\neq k$.  Hence $n-1\neq k-1$ and we have $h(x)=2^{-(n-1)}\neq 2^{-(k-1)}=h(y)$.
+
+\smallbreak\noindent
+{\rm Case 2. $x=-2^{-n}$, $y=-2^{-k}$ for some $n,k\in\mathbb N$.\/} Since $x\neq y$, it follows that $n\neq k$.  Hence $n-1\neq k-1$ and we have $h(x)=-2^{-(n-1)}\neq -2^{-(k-1)}=h(y)$.
+
+\smallbreak\noindent
+{\rm Case 3. $x=2^{-n}$, $y=-2^{-k}$ for some $n,k\in\mathbb N$.\/} In this case we have $h(x)=2^{-(n-1)}\neq -2^{-(k-1)}=h(y)$.
+
+\smallbreak\noindent
+{\rm Case 4. $x=-2^{-n}$, $y=2^{-k}$ for some $n,k\in\mathbb N$.\/} In this case we have $h(x)=-2^{-(n-1)}\neq 2^{-(k-1)}=h(y)$.
+
+\smallbreak\noindent
+{\rm Case 5. $x=\pm 2^{-n}$ for some $n\in\mathbb N$ and $y\neq \pm 2^{-k}$ for any $k\in\mathbb N$.\/} In this case we have $h(x)=\pm 2^{-(n-1)}\neq y=h(y)$.
+
+\smallbreak\noindent
+{\rm Case 6. $y=\pm 2^{-n}$ for some $n\in\mathbb N$ and $x\neq \pm 2^{-k}$ for any $k\in\mathbb N$.\/} In this case we have $h(x)=x\neq \pm 2^{-(n-1)}=h(y)$.
+
+\smallbreak\noindent
+{\rm Case 7. $x\neq\pm 2^{-n}$ and $y\neq \pm 2^{-n}$ for any $n\in\mathbb N$.\/} In this case we have $h(x)=x\neq y=h(y)$.
+
+\smallbreak
+In all cases we have $h(x)\neq h(y)$, so $h$ is injective.
+\end{example}
+
+\section{Finite Sets}
+
+\begin{question*}
+What does it mean to say that a set $A$ is finite?
+\end{question*}
+
+At first glance, this may seem like something you've known for a long time.  Don't we just mean that we can count the elements of $A$?  If so, is the number of cells in your body finite?  Can you count them? Maybe the answer to our question isn't quite so obvious after all.
+
+Let's try to make our answer a bit more precise.  First, for any natural number $n$ we define the set $\mathbb N_n=\{ k\in\mathbb N\mid k\leq n\}$.  So $\mathbb N_4=\{1,2,3,4\}$, for example.
+
+Next, we use the sets $\mathbb N_n$ to formalize the idea of counting introduced in the introduction to this chapter.  We say that a set $A$ has $n$ elements if $\mathbb N_n\equiv A$.
+
+Now it seems that we can say the set $A$ is finite if $A$ has $n$ elements for some $n\in\mathbb N$.  Almost, but we're still forgetting something.  Is the empty set finite?  Clearly we would like to say that the empty set has zero elements, making it finite.  This doesn't quite fit our scheme, so we must treat the empty set as a special case. In keeping our previous idea, here is one way to do so.
+
+\begin{definition}
+Let $A$ be a set. If $A=\emptyset$, we say that $A$ has $0$ elements. If $A\equiv \mathbb N_n$ for some $n\in\mathbb N$, we say that $A$ has $n$ elements. Finally, we
+ say that $A$ is \emph{finite}\index{finite|textbf} if it has $n$ elements for some $n\in\mathbb N\cup \{0\}$. We say that $A$ is \emph{infinite}\index{infinite|textbf} if it is not finite. 
+\end{definition}
+
+Applying Theorem \ref{thrm:comps} and Exercise \ref{ex:monotone}, we obtain the following:
+
+\begin{thrm}
+If $A$ is finite, then $A\preceq\mathbb N$.
+\end{thrm}
+
+Now that we have a definition of finite, let's reconsider the set $C$ of cells in your body.  Is $C$ finite?  If so, for which $n$ is $C\equiv\mathbb N_n$?  We still can't really count them, so perhaps we've just obscured the question rather than answering it.  Scientists estimate that there are about 10,000,000,000,000 cells in the average adult human body.  That's not an actual count of the number of cells in any individual human body, though. These kinds of estimates are based on the sizes of various kinds of cells and the approximate proportion of each kind of cell in the body.  In fact, we could determine the maximum number of cells that might be in a person's body by figuring out how many of the smallest kinds of cells would be required to build a body of a particular volume, or weight, etc.  It seems reasonable to think that we could say a set was finite if we were sure it had at most $n$ elements for some natural number $n$.  That is the intent of the next result.
+
+\begin{thrm}\label{thrm:finite}
+If $A\preceq \mathbb N_n$ for some natural number $n$, then $A$ is finite.\index{finite}
+\end{thrm}
+
+Before attempting to prove this result, let's make sure we understand what we are trying to prove.  We are assuming that there is an injective function $f:A\to \mathbb N_n$.  Unfortunately, our definition of finite requires us to produce a bijective function to some $\mathbb N_k$ and the function $f$ is probably not bijective.\index{function!bijective}  Since $f$ is injective,\index{function!injective} the potential difficulty is that there are extra elements of $\mathbb N_n$ (i.e. $f$ is not surjective).  This seems like something we should be able to overcome without much difficulty since a set with fewer elements than some finite set should certainly be finite.  How do we construct the required bijection though?  Let's first consider a simpler result which will prove useful.
+
+\begin{lemma}\label{lemma:step}
+Let $f:A\to\mathbb N_n$ be an injective function that is not surjective. Then there is an injective function $g:A\to\mathbb N_{n-1}$.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma.]
+Since $f:A\to \mathbb N_n$ is not surjective, the set $B=\mathbb N_n \setminus f(A)$ is nonempty.  Choose $b\in B$.  If $b=n$, then $f(a)\neq n$ for any element $a\in A$ and we may define $g:A\to \mathbb N_{n-1}$ by $g(a)=f(a)$ for each $a\in A$.  If $b\neq n$, we define $g$ by: \[ g(a)= \begin{cases} f(a) & \mbox{if } f(a)\neq n\cr b & \mbox{if } f(a)=n\cr\end{cases} \] In either case $g:A\to\mathbb N_{n-1}$ is as desired since for all $a\in A$, $g(a)\neq n$.
+
+It remains to be shown that $g$ is injective.  Suppose that $a_1,a_2\in A$ and that $g(a_1)=g(a_2)=m$.  If $m=b$, then by definition of $g$ we have $f(a_1)=n=f(a_2)$. If $m\neq b$, then our definition of $g$ implies that $f(a_1)=m=f(a_2)$.  In either case we have $f(a_1)=f(a_2)$, so $a_1=a_2$ because the function $f$ is injective.  Therefore $g$ is injective as desired.
+\end{proof}
+
+We will now prove the theorem.
+
+\begin{proof}[Proof of Theorem \ref{thrm:finite}.]
+First note that if $A=\emptyset$, then $A$ is finite by definition.  We assume for the remainder of the proof that $A\neq\emptyset$.  By hypothesis, there is an injective function $f_0:A\to\mathbb N_n$ for some natural number $n$.  If $f_0$ is also surjective, then we have the desired bijection.  If $f_0$ is not surjective, then we may apply Lemma \ref{lemma:step} to find an injection $f_1:A\to\mathbb N_{n-1}$.  We now consider the function $f_1$.
+
+If $f_1:A\to\mathbb N_{n-1}$ is surjective, then $f_1$ is a bijection. If $f_1$ is not surjective, then we again apply Lemma \ref{lemma:step} to find an injective function $f_2:A\to\mathbb N_{n-2}$.
+
+We continue this process recursively.  If any of the injective functions $f_i:A\to \mathbb N_{n-i}$ are surjective, then we have the desired bijection and the proof is complete.  We claim that this must occur for some $0\leq i\leq n-1$.  To see this, suppose that $f_{n-2}:A\to \mathbb N_2$ is not surjective.  Applying Lemma \ref{lemma:step} we find an injection $f_{n-1}:A\to\mathbb N_1$.  Since $A\neq\emptyset$, we may choose $a\in A$.  Now $f_{n-1}(a)$ must be an element of $\mathbb N_1= \{1\}$, so $f_{n-1}(a)=1$.  It follows that $f_{n-1}$ is surjective as desired.
+
+We have shown that there is a bijective function $f_i:A\to\mathbb N_{n-1}$ for some $0\leq i\leq n-1$, so $A\equiv\mathbb N_{n-i}$ and $A$ is finite.
+\end{proof}
+
+We conclude this section with a question, the answer to which may seem obvious to you.
+
+\begin{question}\label{quest:finite}
+If $m,n\in\mathbb N$ and $m\neq n$, can you prove that $\mathbb N_m\not\equiv \mathbb N_n$?
+\end{question}
+
+\section{Denumerable Sets}
+
+Georg Cantor was able to define a complete system of infinite numbers and of arithmetic on those numbers. We will not discuss his system here, but we will look at one particular kind of infinite number that is important in many areas of mathematics.
+
+\begin{thrm}\label{thrm:infminusfin}
+If $A$ is an infinite set\index{infinite} and $B$ is a finite\index{finite} subset of $A$, then the set $A\setminus B$ is infinite.
+\end{thrm}
+
+\begin{proof}
+Suppose to the contrary that $A\setminus B$ is finite.  It is easy to show that for any subset $B\subset A$, $A=B\cup(A\setminus B)$.  Since both $B$ and $A\setminus B$ are finite, it follows from Exercise \ref{ex:finunions} that $A$ is finite.  This contradicts our hypothesis that $A$ is infinite, so it must true that $A\setminus B$ is infinite.
+\end{proof}
+
+\begin{definition}
+Let $A$ be a set. We say that $A$ is:
+\begin{itemize}
+\item \emph{denumerable}\index{denumerable|textbf} if $A\equiv\mathbb N$.  
+\item \emph{countable}\index{countable|textbf} if $A$ is either finite or denumerable. 
+\item \emph{uncountable}\index{uncountable|textbf} if $A$ is infinite and not denumerable.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+The set $A=\{2k\mid k\in\mathbb N\}$ of even natural numbers is denumerable.  To see this, define the function $f:\mathbb N\to A$ by $f(n)=2n$. It is routine to check that $f$ is a bijection, so $\mathbb N\equiv A$ as desired.
+\end{example}
+
+The preceding example points out a very important difference between finite and infinite sets.  The set $A$ is a proper subset\index{subset!proper} of $\mathbb N$, but has the same cardinality as $\mathbb N$.  Compare this to Exercise \ref{ex:finite}.  All infinite sets have proper subsets of the same cardinality.  In fact, this property is sometimes used to define what it means for a set to be infinite.
+
+We would like to determine which of our results about finite sets are also true for denumerable sets.\index{denumerable}  If $A$ and $B$ are denumerable, must $A\cup B$ also be denumerable?  Are subsets of denumerable sets denumerable?  Is there an analog of Theorem \ref{thrm:finite}?  Are there other ways to tell that a set is denumerable?
+
+\begin{thrm}\label{thrm:denumtrans}
+If $A$ is a denumerable set and $B\equiv A$, then $B$ is denumerable.
+\end{thrm}
+
+\begin{proof}
+By definition we have $A\equiv \mathbb N$.  Since $\equiv$ is an equivalence relation, it follows that $B\equiv\mathbb N$ as desired.
+\end{proof}
+
+\begin{thrm}\label{thrm:subcount}
+If $A\subset\mathbb N$, then $A$ is countable.\index{countable}
+\end{thrm}
+
+\begin{proof}
+If $A$ is finite, then $A$ is countable by definition.
+
+Assume that $A$ is infinite. We define a function $f:\mathbb N\to A$ as follows.  Recall that every nonempty subset of $\mathbb N$ has a smallest element.  Let $f(1)$ be the smallest element of $A_0=A$.  Since $A$ is an infinite the set $A_1=A\setminus \{f(1)\}$ is nonempty, so we may define $f(2)$ to be the smallest element of $A_1$.  Continuing recursively, suppose that we have defined $f(1),\ldots,f(n)$ for some $n\in\mathbb N$.  Let $A_n=A\setminus \{ f(1),\ldots,f(n)\}$.  Since $\{ f(1),\ldots,f(n)\}$ is finite, $A_n$ is infinite by Theorem \ref{thrm:infminusfin}. In particular, $A_n$ is nonempty and we may define $f(n+1)$ to be the smallest element of this set. Before showing that $f$ is bijective we note the following facts that follow immediately from our construction:
+\begin{enumerate}
+\item For every natural number $n$, $A\setminus A_n=\{f(1), \ldots,f(n)\}$.
+\item For every natural number $n$, $f(n)\geq n$.
+\item For all natural numbers $m,n$, if $f(n)\in A_m$ then $m<n$.
+\item For all natural numbers $m<n$, $f(n)\in A_m$.
+\item For all natural numbers $m\leq n$, $f(m)\notin A_n$.
+\end{enumerate}
+
+For any two natural numbers $m<n$ we shown that $f(n)\in A_m$ and $f(m)\notin A_m$, so $f(n)\neq f(m)$ and $f$ is injective.
+
+To see that $f$ is surjective, let $k\in A$.  We must show that $k=f(m)$ for some $m\in\mathbb N$.  If $k=f(k)$, we are done.  Otherwise we have $f(k)>k$.  Now $f(k)$ is the smallest element of $A_{k-1}$ and $k<f(k)$, so $k\notin A_{k-1}$.  We also know that $k\in A$, so it follows that $k\in A\setminus A_{k-1}=\{f(1),\ldots,f(k-1)\}$. Therefore $k=f(n)$ for some $1\leq n<k$ and $f$ is surjective as desired.
+\end{proof}
+
+Applying Theorem \ref{thrm:subcount}, Theorem \ref{thrm:comps}, and Corollary \ref{coro:compbij} we have:
+
+\begin{coro}\label{coro:subdenum}
+A subset of a countable set is countable.
+\end{coro}
+
+\begin{coro}
+A set $A$ is countable if and only if $A\preceq\mathbb N$. 
+\end{coro}
+
+Note that this Corollary allows us to say that a set $A$ is countable if we can find an injection from $A$ to $\mathbb N$.  This is equivalent to finding a surjection from $\mathbb N$ to $A$, as you will show in exercise \ref{exer:injectsurject}. This allows us to conclude the following:
+
+\begin{coro}\label{coro:countable}
+A set $A$ is countable if either of the following is true:\index{countable|textbf}
+\begin{enumerate}
+\item There is an injection $f:A\to\mathbb N$.\index{function!injective}
+\item There is a surjection $f:\mathbb N\to A$.\index{function!surjective}
+\end{enumerate}
+\end{coro}
+
+\begin{thrm}\label{thrm:uniondenum}
+The union of two denumerable sets is denumerable.\index{denumerable}
+\end{thrm}
+
+\begin{proof}
+Suppose that we are given any two denumerable sets $A$ and $B$.  By definition there are bijective functions $f:A\to \mathbb N$ and $g:B\to \mathbb N$.  We define a function $h:A\cup B\to \mathbb N$ by the following rule:  \[ h(x)=\begin{cases} 2f(x) & \mbox{if }\ x\in A\cr 2g(x)+1 & \mbox{if }\ x\notin A\cr\end{cases}\]  We claim that $h$ is an injection.  To see this, let $x\neq y$ be two elements of $A\cup B$.  If $x\in A$ and $y\notin A$, then $h(x)\neq h(y)$ since $h(x)$ is even and $h(y)$ is odd.  Similarly if $x\notin A$ and $y\in A$, then $h(x)\neq
+h(y)$.  If $x$ and $y$ are both in $A$, then $h(x)=2f(x)$ and $h(y)=2f(y)$, so $h(x)\neq h(y)$ because $f$ is injective.  Finally, if neither $x$ nor $y$ are in $A$, then $h(x)=2g(x)+1$ and $h(y)=2g(y)+1$, so $h(x)\neq h(y)$ because $g$ is injective.  In any case, we have shown that $h(x)\neq h(y)$ so $h:A\cup B\to \mathbb N$ is injective.
+
+We have shown that $A\cup B\preceq\mathbb N$, so $A\cup B$ must be countable.  Note however that the function $h$ constructed above is not necessarily a bijection. (Do you see why?) To see that $A\cup B$ is actually denumerable, note that $A\subset A\cup B$.  Applying Exercise \ref{ex:monotone} it follows that $A\preceq A\cup B$.  Since $\mathbb N\preceq A$ we may apply Theorem \ref{thrm:ordering} to obtain $\mathbb N\preceq A\cup B$.  It now follows from the Cantor-Bernstein Theorem\index{Cantor-Bernstein Theorem} that $A\cup B\equiv \mathbb N$ as desired.
+\end{proof}
+
+Using Mathematical Induction\index{mathematical induction} on the number of sets, we obtain:
+
+\begin{coro}
+The union of finitely many denumerable sets is denumerable.
+\end{coro}
+
+\begin{thrm}\label{thrm:Nsquared}
+The set $\mathbb N\times \mathbb N$ is denumerable.
+\end{thrm}
+
+\begin{proof}
+Since $\mathbb N\times\mathbb N$ is infinite, we need only show that it is countable. Define the function $f:\mathbb N\times\mathbb N\to\mathbb N$ by $f(a,b)=2^{a-1}(2b-1)$.  We will show that $f$ is injective, then apply Corollary \ref{coro:countable} to obtain the desired result.
+
+To see that $f$ is injective, suppose that
+\begin{equation}\label{eq:temp}
+2^{a-1}(2b-1)=2^{c-1}(2d-1)
+\end{equation}
+for $(a,b),(c,d)\in\mathbb N\times \mathbb N$.  We show first that $a=c$.  If not, then we may assume without loss of generality that $a<c$.  Dividing both sides of equation \ref{eq:temp} by $2^{a-1}$ yields $(2b-1)=2^{c-a}(2d-1)$.  But this is a contradiction since the quantity on the left side of the equation is odd and the quantity on the right is even.  Since $a=c$, we may reduce equation \ref{eq:temp} to $(2b-1)=(2d-1)$, from which it follows that $b=d$.  Now $(a,b)=(c,d)$ and $f$ is injective as desired.\footnote{While it is not necessary for the purposes of this example, it is not to difficult to show that the function $f$ defined here is actually bijective.}
+\end{proof}
+
+\subsection{The set $\mathbb Q$}
+
+At first glance it may seem that there are more rational numbers\index{rational numbers|(} than there are natural numbers.\index{natural numbers}  After all, there are infinitely many rational numbers between any two natural numbers.  One of Cantor's accomplishments was to show that the set of rational numbers is actually denumerable.  Our intuition developed from years of working with finite sets just doesn't serve us very well when working with infinite sets.
+
+\begin{lemma}\label{lemma:Qpositive}
+The set $\mathbb Q^+$ of positive rational numbers is countable.\index{countable}
+\end{lemma}
+
+\begin{proof}
+Let $\mathbb F=\{ \frac ab\mid a,b\in\mathbb N\}$ be the set of fractions whose numerators and denominators are natural numbers.  We claim that $\mathbb F\equiv\mathbb N\times \mathbb N$.  To see this, define $f:\mathbb F\to\mathbb N\times\mathbb N$ by $f\left(\frac ab\right)=(a,b)$.  We leave it to you to show that $f$ is a bijection (see exercise \ref{exer:Qpositive}), so $\mathbb F\equiv\mathbb N\times\mathbb N$.  We may now apply Theorems \ref{thrm:Nsquared} and \ref{thrm:denumtrans} to see that $\mathbb F$ is denumerable. Since the positive rationals are exactly those numbers that can be expressed as fractions of natural numbers, the function taking each fraction in $\mathbb F$ to the corresponding rational number is a surjection from $\mathbb F$ onto $\mathbb Q^+$. We now apply Corollary \ref{coro:countable} to see that $\mathbb Q^+$ is countable.
+\end{proof}
+
+Since the function taking every positive rational to it's additive inverse is bijective, the following Corollary follows immediately from our Lemma.
+
+\begin{coro}
+The set $\mathbb Q^-$ of negative rational numbers is countable.
+\end{coro}
+
+We know that $\mathbb Q^+$, $\mathbb Q^-$, and $\{0\}$ are all countable sets.  Applying Exercise \ref{ex:unioncount} we may conclude that:
+
+\begin{thrm}
+The set of $\mathbb Q$ of rational numbers is countable.\index{countable}\index{rational numbers|)}
+\end{thrm}
+
+\subsection{The set $\mathbb R$}
+
+By this point it may seem possible that all sets are countable, making denumerability a useless distinction.  We will show that this is not true by demonstrating that the set of real numbers\index{real numbers} is uncountable. First recall that every real number can be written as an infinite decimal.  There is one danger in using such representations, it is possible to have different decimal representations that represent the same real number: e.g. $1.0\overline 0=0.9\overline 9$.  There is only one way that this can happen, though.  A real number with a decimal expansion ending in an infinite string of 0's also has an expansion ending in an infinite string of 9's.  If we disallow expansions ending in a string of 0's (the decimal expansions we normally think of as terminating), the infinite decimal representation of each real number is unique.  This is important in the following proof since we will want to know that real numbers with different infinite decimal expansions are distinct.
+
+\begin{thrm}\label{thrm:R}
+The set $\mathbb R$ of real numbers is uncountable.
+\end{thrm}
+
+\begin{proof}
+Suppose to the contrary that the set $\mathbb R$ is countable, then there is a surjection $f:\mathbb N\to\mathbb R$.  For convenience we use the notation $x_n$ to denote the $n\,$th digit to the right of the decimal place in the unique infinite decimal expansion of $x$.  In particular, the $n\,$th digit to the right of the decimal place in the expansion of $f(m)$ will be denoted $f(m)_n$. For example if $f(2)=\pi=3.141592\ldots$, then $f(2)_4=5$.  We will construct a real number $y$ such that $y\neq f(n)$ for any $n\in\mathbb N$, which contradicts the fact that $f$ is surjective.
+
+For each $n\in\mathbb N$, define: \[ y_n =\begin{cases} 1 & \mbox{if } f(n)_n=9\cr 9 & \mbox{if } f(n)_n\neq9\cr\end{cases} \] Next we define \[ y=\sum_{i=1}^\infty \frac{y_i}{10^i}\] so $y=0.y_1y_2y_3\ldots$.  In other words, $y$ is the unique real number in $(0,1]$ such that the $n\,$th term to the right of the decimal place in the infinite decimal expansion of $y$ is $y_n$.  By definition, $y_n\neq f(n)_n$ for every $n \in \mathbb N$, so $y\neq f(n)$ for any $n\in \mathbb N$ as desired.
+\end{proof}
+
+\clearpage
+
+\section*{Chapter \arabic{chapter} Exercises}
+\addcontentsline{toc}{section}{\protect\numberline{}Chapter \arabic{chapter} Exercises}
+\anschapter
+
+\begin{exercise}\label{ex:monotone}
+Show that if $A\subset B$, then $A\preceq B$.
+\end{exercise}
+
+\begin{exercise}\label{exer:CBtran}
+Prove that the relation $\prec$ is transitive. 
+\answer{{\bfseries \ref{exer:CBtran})} Hint: there is a short proof that makes use of Theorem \ref{thrm:ordering} and the Cantor-Bernstein Theorem.}
+\end{exercise}
+
+\begin{exercise}\label{ex:subfinite}
+Prove that a subset of a finite set is finite.
+\end{exercise}
+
+\begin{exercise}\label{ex:finunions}
+Let $A$ and $B$ be finite sets.  Prove the following:
+\begin{enumerate}
+\item $A\cap B$ is finite.
+\item $A\cup B$ is finite.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{ex:finite}
+Let $A$ be a finite set and let $B$ be a proper subset of $A$.
+\begin{enumerate}
+\item Prove that $B\preceq A$.
+\item Prove that $A$ and $B$ are not equinumerous.\index{equinumerous}  {\slshape Note: this will also answer Question \ref{quest:finite}.}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:countinf}\markit
+Prove that a countable set with an infinite subset must be denumerable.\index{denumerable}
+\answer{{\bfseries \ref{exer:countinf})} Hint: You may find it helpful to use exercise \ref{ex:finunions}.}
+\end{exercise}
+
+\begin{exercise}\label{exer:Qpositive}
+Show that the function $f:\mathbb F\to \mathbb N\times\mathbb N$ defined in the proof of Lemma \ref{lemma:Qpositive} is a bijection.
+\end{exercise}
+
+\begin{exercise}\label{exer:injectsurject}
+Let $A$ and $B$ be nonempty sets. Prove that there is an injection $f:A\to B$ if and only if there is a surjection $g:B\to A$.
+\end{exercise}
+
+\begin{exercise}\label{ex:count}
+Prove that each of the following sets is denumerable.
+\begin{enumerate}
+\item The set of nonnegative integers $\mathbb N\cup\{0\}$.
+\item The set of integers $\mathbb Z$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{ex:unioncount}
+Prove the following.
+\begin{enumerate}
+\item The union of two countable sets is countable.\index{countable}
+\item The union of finitely many countable sets is countable.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:products}
+Let $A$ and $B$ be denumerable sets.  Prove that the set $A\times B$ is
+denumerable.
+\end{exercise}
+
+\begin{exercise}\label{exer:powers}
+Let $A$, $B$, and $C$ be sets.  Define $A\times B\times C=\{ (a,b,c)\mid a\in A \mbox{ and } b\in B \mbox{ and } c\in C\}$.  Prove that $A\times B\times C\equiv (A\times B)\times C$.
+\end{exercise}
+
+\begin{exercise}\label{exer:Ncubed}\markit
+For each natural number $n$, let $\mathbb N^n$ denote the set of ordered $n$-tuples of natural numbers, so $\mathbb N^3=\mathbb N\times\mathbb N \times\mathbb N$, etc.  Prove that $\mathbb N^n$ is countable.
+\answer{{\bfseries \ref{exer:Ncubed})} Hint: Use induction together with exercises \ref{exer:products} and \ref{exer:powers}.}
+\end{exercise}
+
+\begin{exercise}\label{exer:zeroone}\markit
+Let $\mathbb S$ denote the set of sequences of 0's and 1's, so a typical element of $\mathbb S$ looks like $(x_1,x_2,x_3,\ldots)$ where each $x_i$ is either 0 or 1. Prove that $\mathbb S$ is uncountable.
+\answer{{\bfseries \ref{exer:zeroone})} Hint: Adapt the proof of Theorem \ref{thrm:R}.}
+\end{exercise}
+
+\clearpage

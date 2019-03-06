@@ -1,0 +1,382 @@
+\chapter{Functions}
+
+\begin{chapqt}{Rudolf Carnap}
+It is indeed a surprising and fortunate fact that nature can be expressed by relatively low-order mathematical functions.
+\end{chapqt}
+
+\begin{chapqt}{Albert Einstein}
+As far as the laws of mathematics refer to reality, they are not certain; and as far as they are certain, they do not refer to reality.
+\end{chapqt}
+
+\section{Introduction}
+As anybody who has taken a calculus class knows, functions are important in mathematics. In this chapter we will define a function between two sets as a special type of relation between those sets. This definition grew from attempts to resolve various paradoxes that were discovered in the 19th century that challenged the intuitive characterizations of functions that were accepted at the time.
+
+\section{Definition}
+You probably think of functions in several ways based on what you have seen in previous courses.  Functions can be rules for computing things, some people think of them as machines (plug in one number and get out another), and of course we all know that a graph is only the graph of a function if it passes the vertical line test.  Most of these ideas match the way that mathematicians thought of functions (and the way they worked with them) at some time or another.  It wasn't until the late 19th century that the concept of a function was defined in terms of sets.  We present such a definition here:
+
+\begin{definition}
+Let $A$ and $B$ be sets.  A \emph{function}\index{function|textbf} $f$ from $A$ to $B$ is a relation from $A$ to $B$ with the additional property that for each $a\in A$ there is exactly one ordered pair $(a,b)$ in $f$ having $a$ as a first coordinate.  In this case, the set $A$ is called the \emph{domain}\index{function!domain} of $f$ and the set $B$ is called the \emph{codomain}\index{function!codomain} of $f$. If $f$ is a function from $A$ to $B$, we denote this by writing $f:A\to B$. \index{domain of function|see{function!domain}} \index{codomain of function|see{function!codomain}}
+\end{definition}
+
+Do not confuse the codomain of a function with its range.\index{function!range}  The codomain of a function is the set that second coordinates must come from.  The range is the subset of the codomain containing all of those second coordinates. Sometimes those sets are the same, but sometimes they are not.
+
+Note that our definition requires that every element of the domain be the first coordinate of one, and only one, ordered pair in a function. It does not, however, require that each element of the codomain be a second coordinate, or that it be the second coordinate of only one ordered pair.  Satisfying these requirements would make our function surjective or injective, \index{function!injective} \index{function!surjective} respectively.  We discuss these kinds of functions in Section \ref{sec:injsur}.
+
+Before going any further, let's consider a couple of examples.
+
+\begin{example}
+Consider the sets $A=\{1,2,3,4\}$ and $B=\{1,3,5,7\}$.  Define the
+following relations from $A$ to $B$:
+\begin{enumerate}
+\item $f=\{ (1,3),(2,1),(3,5),(4,7)\}$
+\item $g=\{ (1,1),(3,3)\}$
+\item $h=\{ (1,1),(2,3),(3,5),(4,1)\}$
+\item $j=\{ (1,1),(2,3),(3,5),(4,7),(2,7)\}$
+\item $Pat=\{ (1,1),(2,3),(3,5),(4,7),(1,1)\}$
+\end{enumerate}
+
+The relation $f$ is certainly a function.  Each element of $A$ is a first coordinate of one and only one ordered pair.
+
+The relation $g$ is not a function because 2 and 4 are elements of $A$, but are not first coordinates of ordered pairs.
+
+The relation $h$ is a function.  The fact that 1 is a second coordinate of two ordered pairs, or that 7 is not the second coordinate of any, do not violate our definition.
+
+The relation $j$ is not a function because 2 is the first coordinate of two distinct ordered pairs.
+
+Finally, $Pat$ is also a function.  We make two comments here.  First, the fact that the ordered pair $(1,1)$ is listed twice does not violate our definition of a function.  Each ordered pair is either in the relation or not, it cannot be two distinct elements of the relation. Second, while we will usually use letters like $f$ or $g$ to denote functions, and adhering to this convention makes life easier for us, there is no real requirement that we do so.  We can name a relation, and thus also a function, in some other manner if there is a reason to do so.
+\end{example}
+
+The functions in the previous example are obviously constructed to fit the definition, but may not strike you as the kinds of things you think of as functions.  What about the kinds of functions we are used to?
+
+\begin{example}\label{ex:square}
+Define the following relations from $\mathbb R$ to $\mathbb R$.
+\begin{enumerate}
+\item $f=\{ (x,y)\mid x\in\mathbb R \hbox{ and } y=x^2\}$
+\item $g=\{ (x,y)\mid x\in\mathbb R \hbox{ and } x=y^2\}$
+\end{enumerate}
+The relation $f$ is a function (make sure you understand why).  In fact, it is a function that should be familiar to you.  The second coordinates are squares of the first coordinates, so this is the usual squaring function on $\mathbb R$.
+
+The relation $g$ is not a function from $\mathbb R$ to $\mathbb R$. Despite appearances, there are elements of $\mathbb R$ which are not first coordinates: $-1$ is one such element, but any negative number will do.  This relation also violates our definition in another way. Both $(4,2)$ and $(4,-2)$ satisfy the definition of $g$, so 4 is the first coordinate of more than one ordered pair in $g$.  In fact, every positive real number is the first coordinate of two ordered pairs in $g$.
+\end{example}
+
+It probably seems unnatural to you to write the squaring function $f:\mathbb R\to\mathbb R$ as we did in Example \ref{ex:square}. Wouldn't it be easier to write this function as $f(x)=x^2$, the same way we did in algebra or calculus classes?  Once we know that $f$ is a function, we can use this notation.
+
+Suppose that $f:A\to B$ is a function.  If $a\in A$ and $(a,b)\in f$, we say that $b$ is the \emph{value} of the function $f$ at $a$ and denote this by writing $b=f(a)$.
+
+Now the notation $f(x)=x^2$ indicates that for each $x\in\mathbb R$, $x^2$ is the value of the function at $x$.  Please be careful to distinguish between the name of the function $f$ and an arbitrary value of the function $f(x)$.
+
+\begin{example}\label{eg:funcs}
+Here are some examples of important types of functions.  Assume each of the sets is nonempty.
+\begin{enumerate}
+\item Let $A$ be any set.  The \/{\rm identity function} $i:A\to A$ is defined by $i(a)=a$ for each $a\in A$.\index{function!identity}
+
+\item Let $A$ and $B$ be sets and let $b_0\in B$.  The function $k:A\to B$ defined by $k(a)=b_0$ for all $a\in A$ is called a \/{\rm constant function}. \index{function!constant}
+
+\item Let $A$ and $B$ be any sets.  The \/{\rm coordinate projections} $\pi_A:A\times B\to A$ and $\pi_B:A\times B\to B$ are defined by $\pi_A(a,b)=a$ and $\pi_B(a,b)=b$ for each $(a,b)\in A\times B$. \index{function!coordinate projection}
+
+\item Let $A$ be any subset of $\mathbb R$.  The \/ {\rm characteristic function} $\chi_A:\mathbb R\to\{0,1\}$ of $A$ is defined by \[\chi_A(x) =\begin{cases}1 & \mbox{if } x\in A\cr 0 & \mbox{if } x\notin A\end{cases}\] Note: try and sketch a graph of the characteristic function of $\mathbb Q$.\index{function!characteristic}
+\end{enumerate}
+\end{example}
+
+\subsection{Binary Operations}
+
+Standard addition and multiplication on $\mathbb R$ are both examples of functions used to compute a single real number from two given real numbers.  This kind of function is important enough to deserve it's own name.
+
+\begin{definition}
+A \emph{binary operation} on a set $X$ is a function $*:X\times X\to X$.  If $*$ is a binary operation on $X$, we usually use the notation $x*y$ to denote the value $*(x,y)$.\index{binary operation|textbf}
+\end{definition}
+
+\begin{example}
+The standard addition and multiplication operations on $\mathbb N$, $\mathbb Z$, or $\mathbb R$ are all examples on binary operations. Note that they are all \emph{different} binary operations.
+\end{example}
+
+\begin{example}
+Subtraction is a binary operation on the sets $\mathbb Z$ or $\mathbb R$. Subtraction on $\mathbb N$ is not a binary operation on $\mathbb N$ since, for example, $7-12$ is not defined on $\mathbb N$.
+\end{example}
+
+\begin{definition}
+We say that a binary operation $*$ on a set $X$ is:
+\begin{itemize}
+\item \emph{commutative} if $x*y=y*x$ for all $x,y\in X$.\index{commutative law}
+\item \emph{associative} if $(x*y)*z= x*(y*z)$ for all $x,y,z\in X$.\index{associative law}
+\end{itemize}
+\end{definition}
+
+Addition and multiplication on $\mathbb Z$ (or on $\mathbb N$ or $\mathbb R$ for that matter) are commutative and associative, which you have probably known since your first algebra class. Subtraction on $\mathbb Z$ is not commutative since, for example, $4-2\neq 2-4$. Subtraction on $\mathbb Z$ also fails to be associative since, for example, $(5-1)-3=1\neq 7=5-(1-3)$.
+
+\begin{example}\label{BinOps:comm}
+Define the operation $*$ on $\mathbb Z$ by $a*b=(ab)^2$.  We claim that $*$ is commutative.  To see this, let $a$ and $b$ be arbitrary integers. Then:
+\begin{equation*}
+\begin{split}
+a*b&=(ab)^2\\
+&= a^2b^2\\
+&=b^2a^2\\
+&=(ba)^2\\
+&=b*a\\
+\end{split}
+\end{equation*}
+We leave it as an exercise to determine whether or not $*$ is
+associative.
+\end{example}
+
+\section{Injective, Surjective, and Bijective Functions}
+\label{sec:injsur}
+
+\begin{definition}
+A function $f:X\to Y$ is said to be:
+\begin{itemize}
+\item \emph{injective} or \emph{one-to-one} if for all $x,y\in X$, if $f(x)=f(y)$, then $x=y$. \index{function!injective|textbf}
+\item \emph{surjective} or \emph{onto} if for each $y\in Y$, there is an $x\in X$ such that $f(x)=y$. \index{function!surjective|textbf}
+\item \emph{bijective} or \emph{a one-to-one correspondence} if $f$ is both injective and surjective. \index{function!bijective|textbf}
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Let's consider the functions we defined in Example \ref{eg:funcs}.
+\begin{enumerate}
+\item For any nonempty set $A$, the identity function $i:A\to A$ is bijective.\index{function!identity} Assume first that $a,b\in A$ with $i(a)=i(b)$.  Since $i(a)=a$ and $i(b)=b$, this implies that $a=b$ and $i$ is injective.  To see that $i$ is surjective, let $c$ be any element of $A$.  Then $i(c)=c$, so $i$ is surjective.
+\item In general, constant functions are neither injective nor surjective. Assume for the moment that $A$ and $B$ each have more than one element and let $k:A\to B$ be the constant function $k(a)=b_0$.\index{function!constant}  Choose two elements $a_1\neq a_2$ in $A$, then $k(a_1)=b_0=k(a_2)$ and $k$ is not injective.  If $b\neq b_0$ and $b\in B$, then $b\neq k(a)$ for any $a\in A$ and $k$ is not surjective.
+\item Next we consider the coordinate projection $\pi_A:A\times B\to A$.\index{function!coordinate projection}  Once again, we assume that $A$ and $B$ have more than one element each. The function $\pi_A$ is surjective.  To see this suppose that $a\in A$ and choose some $b_0\in B$, then $\pi_A(a,b_0)=a$. Choose $a\in A$ and $b_1\neq b_2$ both in $B$.  Then $(a,b_1)\neq (a,b_2)$ but $\pi_A(a,b_1)=a=\pi_A(a,b_2)$, so $\pi_A$ is not injective.  The coordinate projection $\pi_B:A\times B\to B$ is also surjective but not injective.  The proofs are similar.
+\item Finally, consider the characteristic function $\chi_A:\mathbb R\to\{0,1\}$ of some subset $A$ of $\mathbb R$.\index{function!characteristic}  Once again we assume that $A$ has more than one element.  For any two elements $a\neq b$ of $A$ we have $\chi_A(a)=1=\chi_A(b)$, so $\chi_A$ is not injective.  If $a\in A$ and $c\in \mathbb R\setminus A$, then $\chi_A(a)=1$ and $\chi_A(c)=0$.  Since $0$ and $1$ are the only elements of the codomain, $\chi_A$ is surjective.  Note however that the proof that $\chi_A$ is surjective requires that we be able to find points in $A$ and points in
+$\mathbb R\setminus A$.  If $A=\mathbb R$, then $\chi_A$ is not surjective because $\mathbb R\setminus A=\emptyset$.
+\end{enumerate}
+\end{example}
+
+\section{Compositions of Functions}
+
+\begin{definition}
+Let $f:X\to Y$ and $g:Y\to Z$ be functions.  The \emph{composition} $g\cmps f:X\to Z$\index{function!composition|textbf} is the function from $X$ to $Z$ defined by $g\cmps f(x)=g(f(x))$.  In other words to find $g\cmps f(x)$, first find $f(x)$, then plug the result into the function $g$.  In terms of ordered pairs, the composition is \[g\cmps f=\{(x,z)\mid (x,y)\in f \mbox{ and } (y,z)\in g \mbox{ for some } y\in Y\}.\] 
+\end{definition}
+
+\begin{thrm}\label{thrm:comps}
+Let $f:X\to Y$ and $g:Y\to Z$ be functions.
+\begin{enumerate}
+\item If $f$ and $g$ are injective, then $g\cmps f:X\to Z$ is injective.\index{function!injective}
+\item If $f$ and $g$ are surjective, then $g\cmps f:X\to Z$ is surjective. \index{function!surjective}
+\end{enumerate}
+\end{thrm}
+
+\begin{proof}[Proof of (i)]
+Assume that $f:X\to Y$ and $g:Y\to Z$ are injective.  Let $x_1$ and $x_2$ be distinct elements of $X$.  Since $f$ is injective, $f(x_1)$ and $f(x_2)$ are distinct elements of the set $Y$.  Now since $g$ is injective, $g(f(x_1))$ and $g(f(x_2))$ are distinct elements of $Z$. Therefore $g\cmps f$ is injective as desired.
+\end{proof}
+
+\begin{proof}[Proof of (ii)]
+Assume that $f:X\to Y$ and $g:Y\to Z$ are surjective.  Let $z$ be an arbitrary element of $Z$.  Since $g$ is surjective, there must be some element $y\in Y$ such that $g(y)=z$.  Now since $f$ is surjective there must be an element $x\in X$ with $f(x)=y$, so $g(f(x))=g(y)=z$ and $g\cmps f:X\to Z$ is surjective as desired.
+\end{proof}
+
+Combining the two parts of Theorem \ref{thrm:comps}, we have the following:
+
+\begin{coro}\label{coro:compbij}
+If $f:X\to Y$ and $g:Y\to Z$ are bijective functions, then $g\cmps f:X \to Z$ is bijective.\index{function!bijective}
+\end{coro}
+
+It is natural to ask whether or not the converses of the statements in Theorem \ref{thrm:comps} are true.  We consider the converse of \ref{thrm:comps}\,\emph{(i)} in the following example and theorem.
+
+\begin{example}
+Define $f:\mathbb N\to\mathbb R$ by $f(n)=n^2$.  Since no two natural numbers (which are all positive) have the same square, $f$ is injective. Define $g:\mathbb R\to \mathbb R$ by $g(x)=x^2$.  Since $g(-2)=4=g(2)$, $g$ is not injective.  Now we consider the composition $g\cmps f:\mathbb N\to \mathbb R$ of these functions.  For each $n\in\mathbb N$ we have
+$g(f(n))=g(n^2)=(n^2)^2=n^4$.  Let $m,n\in\mathbb N$ with $m^4=n^4$, then \[0=m^4-n^4=(m^2+n^2)(m-n)(m+n),\] so $m=n$ or $m=-n$.  But $m$ and $n$ are both positive, so $m\neq-n$ and it must be true that $m=n$. Hence $g\cmps f:\mathbb N\to\mathbb R$ is injective.
+\end{example}
+
+This example shows that it is possible for $g\cmps f$ to be injective when $g$ is not.  The next result says that if $g\cmps f$ is injective, then it does follow that $f$ is injective.
+
+\begin{thrm}
+Let $f:X\to Y$ and $g:Y\to Z$ be functions such that $g\cmps f:X\to Z$ is injective.  Then $f:X\to Y$ must be injective.
+\end{thrm}
+
+\begin{proof}
+We prove that if $f:X\to Y$ is not injective, then $g\cmps f:X\to Z$ is not injective, which is the contrapositive of the desired proposition. Suppose that $f$ is not injective, then there must be elements $x_1\neq x_2$ in $X$ with $f(x_1)=f(x_2)$.  Since $g$ is a function, it must be true that $g(f(x_1))= g(f(x_2))$.  Since $x_1\neq x_2$ but $g\cmps f(x_1)=g\cmps f(x_2)$, $g\cmps f$ is not injective.
+\end{proof}
+
+We leave the proof of the corresponding result for surjective functions as an exercise.
+
+\begin{thrm}\label{thrm:surjectivecomp}
+Let $f:X\to Y$ and $g:Y\to Z$ be functions such that $g\cmps f:X\to Z$ is surjective.  Then $g:Y\to Z$ must be surjective.
+\end{thrm}
+
+\subsection{Inverses of functions}
+
+\begin{definition}
+If $f:X\to Y$ is a function, the \emph{inverse}\index{function!inverse|textbf} of $f$ is the relation $g$ from $Y$ to $X$ given by:  \[g=\{(y,x)\mid (x,y)\in f\}\]
+\end{definition}
+
+By this definition every function will have an inverse relation. Note however that the inverse of a function is not generally a function, as we see in the following example.
+
+\begin{example}
+Let $f:\mathbb R\to\mathbb R$ be the function defined by $f(x)=x^2$, then the inverse of $f$ is the relation $g=\{ (x^2,x)\mid x\in\mathbb R\}$.  Note that $g$ is not a function since both $(4,2)$ and $(4,-2)$ are in $g$.
+\end{example}
+
+\begin{definition}
+If $f:X\to Y$ is a function and the inverse of $f$ is also a function, we say that $f$ is \emph{invertible}\index{function!invertible|(} and use $f^{-1}:Y\to X$ to denote the inverse.
+\end{definition}
+
+
+\begin{question}
+When is a function $f:X\to Y$ invertible?
+\end{question}
+
+Thinking back to what you've seen in previous courses for a moment, you are likely to have been taught that a function from $\mathbb R$ to $\mathbb R$ will have an inverse if it passes the ``horizontal line test.'' \index{horizontal line test}  Do you remember why?  One way to think of this is that the graph of the inverse is the reflection through the line $y=x$ of the graph of the function.  Since we want the reflection (the graph of the inverse) to pass the vertical line test,\index{vertical line test} the graph of the original function should pass the horizontal line test.  There should be some relationship between this condition and the answer to our question.
+
+For the graph of a function to pass the horizontal line test, i.e.~no horizontal line intersects the graph more than once, means that no two points of the graph have the same height.  In other words, no two distinct points on the graph have the same $y$-coordinate.  Rephrasing, if $(x_1,y)$ and $(x_2,y)$ are both on the graph, then $x_1=x_2$.  But this is just our definition of what it means for a function to be injective.  Perhaps injective functions and invertible functions are the same thing?  We can show that every invertible function is injective.
+
+\begin{thrm}\label{th:inject}
+If $f:X\to Y$ is an invertible function, then $f$ is injective.\index{function!injective}
+\end{thrm}
+
+\begin{proof}
+Suppose that $f$ is not injective, then there are two elements $x_1\neq x_2$ of $X$ such that $f(x_1)=f(x_2)$.  Let $y=f(x_1)$.  By definition both $(y,x_1)$ and $(y,x_2)$ must be elements of the inverse of $f$. Since $x_1\neq x_2$, this implies that the inverse of $f$ is not a function.  Therefore, $f$ is not invertible.
+\end{proof}
+
+Unfortunately, this is not a complete answer to our question because the converse of Theorem \ref{th:inject} is not true.  We have found a condition that all invertible functions must satisfy, but not all functions that satisfy this condition are invertible.  The following example illustrates the difficulty.
+
+\begin{example}
+Define $f:\mathbb N\to\mathbb N$ by $f(n)=n+1$.  This function is injective (if $m+1=n+1$, then $m=n$), but not invertible according to our definition.  The inverse relation $g$ contains all ordered pairs of the form $(n+1,n)$ where $n\in\mathbb N$.  For $g$ to be a function from $\mathbb N$ to $\mathbb N$, every element of $\mathbb N$ must be the first coordinate of exactly one ordered pair in $g$.  The problem here is that $1$ is in $\mathbb N$, but $1\neq n+1$ for any $n\in \mathbb N$, so $1$ is not the first coordinate of any of the ordered pairs in $g$. Therefore $g$ is not a function from $\mathbb N$ to $\mathbb N$.
+\end{example}
+
+For a function $f:X\to Y$ to be invertible, every element of the codomain $Y$ must be a first coordinate of some ordered pair in the inverse.  That in turn means that every element of the codomain must be the second coordinate of some ordered pair in $f$.  This is exactly what it means to say that $f$ is surjective.  This leads us to believe the following:
+
+\begin{thrm}\label{th:surject}
+If $f:X\to Y$ is invertible, then $f$ is surjective.\index{function!surjective}
+\end{thrm}
+
+\begin{proof}
+Assume that $f:X\to Y$ is not surjective, then there is some element $y\in Y$ so that $y\neq f(x)$ for any $x\in X$.  In other words, $y$ is not the second coordinate of an ordered pair in $f$.  By definition then, $y$ will not be the first coordinate of any ordered pair in the inverse of $f$.  Hence the inverse of $f$ is not a function from $Y$ to $X$ and $f$ is not invertible.
+\end{proof}
+
+We are now ready to give a complete answer to our question in the form
+of the following theorem.
+
+\begin{thrm}\label{thrm:invert}
+A function $f:X\to Y$ is invertible if and only if it is bijective.\index{function!bijective}
+\end{thrm}
+
+\begin{proof}
+If $f$ is invertible, then we may use Theorems \ref{th:inject} and \ref{th:surject} to establish the fact that $f$ is bijective.
+
+To see that the converse is true, suppose that $f:X\to Y$ is a bijective function.  Let $g=\{(y,x)\mid (x,y)\in f\}$ be the inverse of $f$.  We must show that $g$ is a function from $Y$ to $X$, i.e.~that every $y\in Y$ is the first coordinate of exactly one ordered pair in $g$.  Let $y\in Y$.  Since $f$ is surjective, $y=f(x)$ for some $x\in X$.  By definition $(x,y)\in f$ implies that $(y,x)\in g$, so $y$ is the first coordinate of at least one ordered pair in $g$.    Now suppose that $(y,x_1)$ and $(y,x_2)$ are both in $g$.  By definition this means that $f(x_1)=y$ and $f(x_2)=y$.  Since $f$ is injective this implies that $x_1=x_2$.   It follows that $y$ cannot be the first coordinate of more than one ordered pair in $g$, so $g$ is a function from $Y$ to $X$ and $f$ is invertible.
+\end{proof}\index{function!invertible|)}
+
+\clearpage
+
+
+
+
+
+
+
+
+\section*{Chapter \arabic{chapter} Exercises}
+\addcontentsline{toc}{section}{\protect\numberline{}Chapter \arabic{chapter} Exercises}
+\anschapter
+
+\begin{exercise}\label{exer:empty}\markit
+Let $A$ be a nonempty set.  Explain why there are no functions from $A$ to $\emptyset$.
+\answer{{\bfseries \ref{exer:empty})} Hint: given $a\in A$, what ordered pairs $(a,y)$ could be in the function?}
+\end{exercise}
+
+\begin{exercise}
+Is standard division a binary operation on $\mathbb N$?  on $\mathbb R$? Justify your answer in each case.
+\end{exercise}
+
+\begin{exercise}
+Is the dot product a binary operation on $\mathbb R^3$?  Recall that the dot product is defined by $(a,b,c)\cdot(d,e,f)=ad+be+cf$.
+\end{exercise}
+
+\begin{exercise}
+Determine whether or not the operation $*$ defined in Example \ref{BinOps:comm} is an associative operation on $\mathbb Z$.
+\end{exercise}
+
+\begin{exercise}\label{exer:binop}
+Determine whether or not each of the following binary operations on $\mathbb R$ is (a) commutative, (b) associative.
+\begin{enumerate}
+\item\label{binop:distance}\markit $a*b=|a-b|$.
+\answer{{\bfseries \ref{exer:binop}(\ref{binop:distance})} $*$ is commutative, but not associative: consider $a=1$, $b=2$, $c=3$.}
+\item $a*b=\frac{a}{b^2+1}$.
+\item $a*b=\max\{a,b\}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:images}
+Let $f:X\to Y$ be a function; let $A$ and $B$ be subsets of $X$. For $Z\subset X$ define $f(Z)=\{ f(z)\mid z\in Z\}$. Determine which of the following are true.  If a statement is true, prove it.  If a statement is false, find a counterexample.
+\begin{enumerate}
+\item\label{images:union}\markit $f(A\cup B)\subset f(A)\cup f(B)$
+\answer{{\bfseries \ref{exer:images}(\ref{images:union})} Hint: If $y\in f(A\cup B)$, then $y=f(x)$ for some $x\in A\cup B$. Consider two cases.}
+\item $f(A\cup B)\supset f(A)\cup f(B)$
+\item $f(A\cap B)\subset f(A)\cap f(B)$
+\item $f(A\cap B)\supset f(A)\cap f(B)$
+\item\label{images:complement}\markit $f(X\setminus A)\subset Y\setminus f(A)$
+\answer{{\bfseries \ref{exer:images}(\ref{images:complement})} False: find an example where some point is in the image of $A$ and $X\setminus A$ both.}
+\item $f(X\setminus A)\supset Y\setminus f(A)$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+For each of the false statements in the previous exercise, determine whether or not they are true under the following conditions.  Prove or give a counterexample in each case.
+\begin{enumerate}
+\item $f:X\to Y$ is an injective function.
+\item $f:X\to Y$ is a surjective function.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:bijections}
+Let $A=\{1,2,3\}$.  For each of the following, either find a function satisfying the indicated properties or prove that no such function exists.
+\begin{enumerate}
+\item A bijective function $f:A\to A$ other than the identity function.
+
+\item\label{bijections:injective}\markit An injective function $g:A\to A$ that is not surjective.
+\answer{{\bfseries \ref{exer:bijections}(\ref{bijections:injective})} If $g:A\to A$ is injective, then the image must contain three distinct points. Since there are only three points in $A$, each must be in the image and $g$ must be surjective.}
+\item A surjective function $h:A\to A$ that is not injective.
+
+\item A function $j:A\to A$ that is neither injective nor surjective.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Let $A=\{1,2,3\}$ and $B=\{4,5\}$.  For each of the following, either find a function satisfying the indicated properties or prove that no such function exists.
+\begin{enumerate}
+\item A bijective function $f:A\to B$.
+
+\item An injective function $g:A\to B$ that is not surjective.
+
+\item A surjective function $h:A\to B$ that is not injective.
+
+\item A function $j:A\to B$ that is neither injective nor surjective.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+For each of the following, either find a function satisfying the indicated properties or prove that no such function exists.
+\begin{enumerate}
+\item A bijective function $f:\mathbb N\to \mathbb N$ other than the identity.
+
+\item An injective function $g:\mathbb N\to \mathbb N$ that is not surjective.
+
+\item A surjective function $h:\mathbb N\to \mathbb N$ that is not injective.
+
+\item A function $j:\mathbb N\to \mathbb N$ that is neither injective nor surjective.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:equivinject}
+Let $A$ be a nonempty set and $\sim$ an equivalence relation on $A$; let $\widehat A$ be the set of all equivalence classes. Prove that there is an injective function $f:\widehat A\to A$.
+\end{exercise}
+
+\begin{exercise}
+Find examples of sets $X$, $Y$, and $Z$ and functions $f:X\to Y$ and $g:Y\to Z$ so that $g\cmps f:X\to Z$ is surjective but $f:X\to Y$ is not surjective.
+\end{exercise}
+
+\begin{exercise}
+Prove Theorem \ref{thrm:surjectivecomp}.
+\end{exercise}
+
+\begin{exercise}
+The standard integer addition operation $+$ is a function from $\mathbb Z^2\to\mathbb Z$.  Show that if $a \equiv_5 b$ (see Exercise \ref{ex:modulo}) and $c\equiv_5 d$, then $a+c\equiv_5 b+d$.  This shows that addition is \emph{well-defined} with respect to this equivalence relation.
+\end{exercise}
+
+\begin{exercise}\label{ex:inverses}
+Let $f:X\to Y$ be an invertible function and let $f^{-1}:Y\to X$ denote the inverse of $f$.  Show that $f^{-1}$ is bijective and that $f$ is the inverse of $f^{-1}$.
+\end{exercise}
+
+\begin{exercise}
+Let $f:X\to Y$ be a function and suppose that the function $g:Y\to X$ is the inverse of $f$. Show that the composition $g\cmps f:X\to X$ is the identity function, i.e. that $g(f(x))=x$ for every $x\in X$.
+\end{exercise}
+

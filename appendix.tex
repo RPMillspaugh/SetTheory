@@ -1,0 +1,130 @@
+\chapter{The Cantor-Bernstein Theorem}
+
+In this appendix we present a proof of the Cantor-Bernstein Theorem.\index{Cantor-Bernstein Theorem|textbf}
+The proof uses the same idea we used to construct the bijection between
+an open interval and a closed interval in Example \ref{ex:openclosed}.
+First we introduce some convenient notation.
+
+Let $f:X\to Y$ be any function. For $A\subset X$, the \emph{image} of
+$A$ is the set $f(A)=\{ f(x)\mid x\in A\}$. For $B\subset Y$ we use
+$f^{-1}(B)$ to denote the set $f^{-1}(B)=\{ x\in X\mid f(x)\in B\}$. The
+set $f^{-1}(B)$ is called the \emph{preimage} of $B$.  We also use the
+notation $f^{-1}(x)$ to denote $f^{-1}(\{x\})$.  You should not assume
+from our use of this notation that the function $f$ is invertible!
+If $f:X\to X$ we use the notation $f^2$ to denote the function
+$f\cmps f:X\to X$.  Recursively, for a natural number $n\geq2$,
+$f^{n+1}$ is used to denote the function $f\cmps f^n:X\to X$.  Finally,
+we define $f^0$ to be the identity function on $X$.
+
+\begin{falsethrm}[Cantor-Bernstein]
+If $X\preceq Y$ and $Y\preceq X$, then $X\equiv Y$.
+\end{falsethrm}
+
+\begin{proof}
+By hypothesis there exist injections $f:X\to Y$ and $g:Y\to X$. We will
+find a bijective function $h:X\to Y$ with the property that $h(x)=f(x)$
+for most $x\in X$ and $h(x)=g^{-1}(x)$ (since $g$ is injective,
+$g^{-1}(x)$ is always a single point) for the remaining $x\in X$.  As in
+Example \ref{ex:openclosed}, we use $g^{-1}(x)$ only as necessary to
+insure that the final function is bijective.
+
+For every point $y\in Y\setminus f(X)$, we define a sequence of points
+in $X$ as follows: $x_1=g(y)$, $x_2=g(f(x_1))=g\cmps f(g(y))$,
+$x_3=g(f(x_2))=(g\cmps f)^2(g(y))$, and in general $x_{n+1}=
+g(f(x_n))=(g\cmps f)^{n-1}(g(y))$ for each $n\in\mathbb N$.  Note that
+since $g$ is injective $g^{-1}(x_1)$ contains only the point $y$ and
+that for $k\geq2$, $g^{-1}(x_k)$ contains only the point $x_{k-1}$.
+Define the set \[S=\{ x\mid x=(g\cmps f)^n(g(y)) \mbox{ for some } y\in
+Y\setminus f(X) \mbox{ and for some } n\in\mathbb N\cup\{0\}\}.\]
+In other words, the set $S$ contains every point of each of the
+sequences we created above.  This set will be the set of points on which
+$h$ is not the same as $f$.
+
+\smallbreak\noindent
+{\cscp Step 1:} We prove the following facts about the set $S$.
+\begin{enumerate}
+\item If $y\in Y\setminus f(X)$, then $g(y)\in S$.
+\item If $x\in S$, then $g\cmps f (x)\in S$.
+\item If $g(f(x))\in S$, then $x\in S$.
+\end{enumerate}
+
+For $y\in Y\setminus f(X)$ we have $g(y)=(g\cmps f)^0(g(y))$, so (i) is
+true.
+
+If $x\in S$, then $x=(g\cmps f)^n(g(y))$ for some $n\in\mathbb N \cup
+\{0\}$ and some $y\in Y\setminus f(X)$.  Now $g\cmps f(x)=(g\cmps
+f)^{n+1}(g(y))$, so $g\cmps f(x)\in S$ and (ii) holds.
+
+To see that (iii) is true, suppose that $g(f(x))= (g\cmps f)^n(g(y))$
+for some $y\in Y\setminus f(X)$ and some $n\in\mathbb N\cup\{0\}$.  If
+$n=0$ then we have $g(f(x))=g(y)$.  Since $g$ is injective this would
+imply $y=f(x)$, which contradicts our choice of $y$.  Hence $n\geq 1$
+and the point $w=(g\cmps f)^{n-1}(g(y))$ is an element of $S$ by
+definition.  Now $g\cmps f(w)=(g\cmps f)^n(g(y))=g\cmps f(x)$.  But
+$g\cmps f$ is injective by Theorem \ref{thrm:comps}, so we have $w=x$
+and $x\in S$ as desired.
+
+\smallbreak\noindent
+{\cscp Step 2:} We now define the function $h:X\to Y$.
+
+For $x\in X$ we define: \[ h(x)=
+\begin{cases}
+g^{-1}(x) & \mbox{ if } x\in S\cr
+f(x) & \mbox{otherwise.}\cr
+\end{cases}\]
+
+Clearly $h(x)$ is defined for every $x\in X\setminus S$.  If $x\in S$
+then by definition $x=(g\cmps f)^n(g(y))$ for some $n$ and $y$, but this
+implies that $x\in g(Y)$ and $g^{-1}(x)$ is nonempty.  We must also be
+sure that we have actually defined a function, i.e. that there is only
+one point in $g^{-1}(x)$ for each $x\in S$.  To this end, suppose
+that $y_1$ and $y_2$ are each in $g^{-1}(x)$ for some $x\in S$.  By
+definition we have $g(y_1)=g(y_2)$.  Since $g$ is injective this implies
+that $y_1=y_2$ as desired.  It remains to be shown that $h$ is
+bijective.
+
+\smallbreak\noindent
+{\cscp Step 3:} We show that $h$ is surjective.
+
+Let $z\in Y$.  Either $g(z)\in S$ or not.
+
+\noindent
+{\cscp Case 1:} If $g(z)\in S$, then $h(z)=g^{-1}(g(z))=z$.
+
+\noindent
+{\cscp Case 2:} Suppose $g(z)\notin S$.  By (i) $z\notin Y\setminus
+f(X)$, so there is an $x\in X$ such that $f(x)=z$.  Since
+$g(f(x))=g(z)\notin S$, $x\notin S$ by (ii).  Therefore $h(x)=f(x)=z$.
+
+In either case we have shown that $z\in h(X)$, so $h$ is surjective as
+desired.
+
+\smallbreak\noindent
+{\cscp Step 4:} We show that $h$ is injective, which will complete the
+proof of the theorem.
+
+Suppose that $h(x_1)=h(x_2)$ for some $x_1,x_2\in X$.  We consider
+several cases.
+
+\noindent
+{\cscp Case 1:} Suppose that neither of $x_1$ or $x_2$ are in $S$.  Then
+$f(x_1)=h(x_1)=h(x_2)=f(x_2)$ and $x_1=x_2$ because $f$ is injective.
+
+\noindent
+{\cscp Case 2:} Suppose both $x_1$ and $x_2$ are in $S$.  Then
+$g^{-1}(x_1)= h(x_1)= h(x_2)= g^{-1} (x_2)$, so there is an element
+$y\in S$ so that $g(y)=x_1$ and $g(y)=x_2$.  This implies that $x_1=x_2$
+because $g$ is a function.
+
+\noindent
+{\cscp Case 3:} Finally, suppose that $x_1\in S$ and $x_2\notin S$.  In
+this case we have $g^{-1}(x_1)=h(x_1)=h(x_2)=f(x_2)$, so $x_1=
+g(g^{-1}(x_1)= g(f(x_2))$ and $g(f(x_2))\in S$.  Applying (iii) it
+follows that $x_2\in S$, which is a contradiction.  Therefore this case
+is impossible.  Clearly it is also impossible to have $x_1\notin S$ and
+$x_2\in S$.
+\end{proof}
+
+
+
+\clearpage

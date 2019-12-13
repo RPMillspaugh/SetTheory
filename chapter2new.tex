@@ -1,0 +1,508 @@
+\chapter{Logical Arguments}
+
+\begin{chapqt}{Bertrand Russell}
+The fact that mathematics is symbolic logic is one of the greatest discoveries of our age.
+\end{chapqt}
+
+\begin{chapqt}{Godfrey Hardy}
+Reductio ad absurdum, which Euclid loved so much, is one of a mathematician's finest weapons. It is a far finer gambit than any chess play: a chess player may offer the sacrifice of a pawn or even a piece, but a mathematician offers the game.
+\end{chapqt}
+
+\section*{Introduction}
+
+Loosely speaking, a mathematical proof is a logical argument. It is probably more correct to say that a mathematical proof is a way of indicating how a logical argument could be carried out, but for now let's not worry about that distinction. In this chapter we will learn what we mean by a logical argument and look at some common types of mathematical proofs.
+
+The first proofs most students encounter are two-column proofs, frequently in high school geometry. In this kind of proof the first column consists of a series of statements and the second a series of justifications for those statements. Allowable justifications might be assumptions, definitions, theorems, or consequences of previous steps. We concern ourselves first with the rules that allow us to deduce propositions from previous propositions. 
+
+\section{Rules of Inference} 
+
+We accept the following two basic rules of thought:
+\begin{itemize}
+\item[] The \emph{Law of Excluded Middle}\index{excluded middle|textbf} says that given any proposition $P$, we may deduce $P\lor \neg P$. In words, either $P$ is true or $\neg P$ is true.
+\item[] The \emph{Law of non-Contradiction}\index{non-contradiction|textbf} says that given any proposition $P$, we may deduce $\neg(P\land\neg P)$. In words, $P$ and $\neg P$ cannot both be true.
+\end{itemize}
+
+A \emph{rule of inference}\index{rule of inference} is a logical rule consisting of a hypothesis and a conclusion. Whenever the hypothesis is true, the conclusion must also be true. For our purposes this means that once we have deduced all of the hypotheses, we may also deduce the conclusion. Rules of inference are closely related to tautologies.\index{tautology}  In fact, they are essentially the same thing. While every tautology gives rise to a rule of inference, in practice the seven listed in the table below will usually suffice.
+
+\marginnote{Table \ref{table:inference}: Rules of Inference}\index{rule of inference|textbf}
+{\renewcommand\arraystretch{1.2}
+\begin{table}[htbp]
+\centering
+\caption{Rules of Inference}
+\begin{tabular}{l l l}
+&&\\
+\hline 
+\bfseries Name & \bfseries Hypotheses & \bfseries Conclusion\\
+\hline
+Modus ponens\index{rule of inference!modus ponens|textbf} & $P$ and $P\Rightarrow Q$ & $Q$\\
+Modus tolens \index{rule of inference!modus tolens|textbf} & $\neg Q$ and $P\Rightarrow Q$ & $\neg P$\\
+Hypothetical syllogism \index{rule of inference!hypothetical syllogism|textbf} & $P\Rightarrow Q$ and $Q\Rightarrow R$ & $P\Rightarrow R$\\
+Addition \index{rule of inference!addition|textbf} & $P$ & $P\lor Q$\\
+Simplification \index{rule of inference!simplification|textbf} & $P\land Q$ & $P$\\
+Conjunction \index{rule of inference!conjunction|textbf} & $P$ and $Q$ & $P\land Q$\\
+Disjunctive syllogism \index{rule of inference!disjunctive syllogism|textbf} & $P\lor Q$ and $\neg P$ & $Q$\\
+\end{tabular}
+\label{table:inference}
+\end{table}}
+
+The Rule of Addition, for example, comes from the tautology $P\Rightarrow(P\lor Q)$. Since the implication is always true, knowing that the hypothesis is true will tell us that the conclusion must also be true. We can verify each of the Rules of Infernece in Table \ref{table:inference} by constructing a truth table for the associated tautology.
+
+\subsection{Propositional Arguments}
+
+In this section we consider theorems from logic rather than from mathematics. We will look at arguments in which the form of each proposition is important rather than the content of the propositions.  Each of our Rules of Inference is actually a \emph{propositional argument},\index{propositional argument} where accepting the hypotheses forces us to accept the conclusion. We use the following notation for propositional arguments, where the propositions above the line are hypotheses and the proposition(s) below the line are the conclusion(s). We precede the conclusions(s) with the symbol $\therefore$ which is read ``therefore.'' Please note that not all authors use this symbol. 
+
+\begin{example}
+Here is the rule modus tolens in our notation:
+\begin{centeredarg}
+\item $\neg Q$
+\item $P\Rightarrow Q$
+\hence $\neg P$
+\end{centeredarg}
+\end{example}
+
+\begin{example}\label{ex:inference}
+Express the following rules of inference as propositional arguments.
+\begin{enumerate}\itemsep0pt
+\item Modus ponens
+\item Hypothetical syllogism
+\end{enumerate}
+{\bfseries\upshape Solutions.}
+\begin{enumerate}
+\item \begin{centeredarg}
+\item $P$
+\item $P\Rightarrow Q$
+\hence $Q$
+\end{centeredarg}
+\item \begin{centeredarg}
+\item $P\Rightarrow Q$
+\item $Q\Rightarrow R$
+\hence $P\Rightarrow R$
+\end{centeredarg}
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+A propositional argument is said to be \emph{valid} if accepting the hypotheses forces us to accept the conclusion(s).\index{propositional argument|textbf}
+\end{definition}
+
+How do we determine whether or not a propositional argument is valid? One option is to constuct a truth table, but that can be very tedious. Our preferred option is to construct a logical argument which begins by assuming each of the hypotheses is true and deduces consequences using our rules of inference. Each deduced proposition is a step in our proof that can be justified as either a hypothesis, a consequence of previous steps and a rule of inference, or a proposition that is logically equivalent to a previous step. The proof is complete when we have deduced the desired conclusion. 
+
+\begin{example}\label{ex:arg1}
+Prove that the following argument is valid:
+{\setlength\linwid{1in}
+\begin{centeredarg}
+\item $P$
+\item $P\Rightarrow Q$
+\item $(Q\lor R)\Rightarrow S$
+\hence $S$
+\end{centeredarg}}
+\begin{itemize}\itemsep0pt\itemindent-2em
+\item[]\proparg{Proof.}{(1)\hskip1em $P$}{hypothesis}
+\item[]\proparg{}{(2)\hskip1em $P\Rightarrow Q$}{hypothesis}
+\item[]\proparg{}{(3)\hskip1em $Q$}{modus ponens, (1) and (2)}
+\item[]\proparg{}{(4)\hskip1em $Q\lor R$}{addition, (3)}
+\item[]\proparg{}{(5)\hskip1em $(Q\lor R)\Rightarrow S$}{hypothesis}
+\item[]\proparg{}{(6)\hskip1em $S$}{modus ponens, (4) and (5)}
+\end{itemize}
+\end{example}
+
+\begin{example}\label{ex:contradiction}
+Prove that the following argument is valid:
+{\setlength\linwid{1.2in}
+\begin{centeredarg}
+\item $P\Rightarrow(Q\land\neg Q)$
+\hence $\neg P$
+\end{centeredarg}}
+\begin{itemize}\itemsep0pt\itemindent-2em
+\item[]\proparg{Proof.}{(1)\hskip1em $P\Rightarrow (Q\land\neg Q)$}{hypothesis}
+\item[]\proparg{}{(2)\hskip1em $\neg(Q\land\neg Q)$}{Excluded Middle}
+\item[]\proparg{}{(3)\hskip1em $\neg P$}{modus tolens, (1) and (2)}
+\end{itemize}
+\end{example}
+
+The argument in Example \ref{ex:contradiction} says that if a proposition $P$ implies a contradiction, then $\neg P$ must be true. We will use this result in the sequel as the basis for proofs by contradiction.
+
+\subsection{Arguments with Quantifiers}
+
+Arguments involving quantified propositions require us to have rules of inference for instantiation and quantification. The \emph{rules for instantiation}\index{rule of inference!quantification!instantiation} when we can deduce statements about particular elements of the domain given quantified statements. The \emph{rules for generalization} 
+\index{rule of inference!quantification!generalization} tell us when we can deduce quantified statements given deductions about particular elements of the domain. We give these rules in Table \ref{table:quantification}. 
+
+\marginnote{Table \ref{table:quantification}: Rules of Quantification}\index{rule of inference!quantification|textbf}
+{\renewcommand\arraystretch{1.2}
+\begin{table}[htbp]
+\centering
+\caption{Rules of Quantification}
+\begin{tabular}{l l}
+&\\
+\hline 
+\bfseries Name & \bfseries Rule \\
+\hline
+Universal Instantiation & $\forall x\ P(x) \therefore P(c)$ whenever $c$ is in the domain of $x$\\ 
+Existential Instantiation & $\exists x\ P(x) \therefore P(c)$ for some $c$ in the domain of $x$\\
+\hline
+Universal Generalization & $P(c)$ for \emph{arbitrary} $c$ in the doamin of $x \therefore \forall x\ P(x)$\\
+Existential Generalization & $P(c)$ for \emph{some} $c$ in the domain of $x \therefore \exists x\ P(x)$\\
+\end{tabular}
+\label{table:quantification}
+\end{table}}
+
+\begin{example}\label{ex:quantified}
+Prove that the following argument is valid:
+{\setlength\linwid{1.4in}
+\begin{centeredarg}
+\item $\forall x\ (P(x)\land Q(x))$
+\item $\exists x\ (P(x)\Rightarrow R(x))$
+\hence $\exists x\ (Q(x)\land R(x))$
+\end{centeredarg}}
+{\setlength\midlength{.4\linewidth}
+\begin{itemize}\itemsep0pt\itemindent-2em
+\item[] \wideproparg{Proof.}{(1)\hskip1em $\exists x\ (P(x)\Rightarrow R(x))$}{hypothesis}
+\item[] \wideproparg{}{(2)\hskip1em $P(c)\Rightarrow R(c)$ for some $c$}{existential quantification, (1)}
+\item[] \wideproparg{}{(3)\hskip1em $\forall x\ (P(x)\land Q(x))$}{hypothesis}
+\item[] \wideproparg{}{(4)\hskip1em $P(c)\land Q(c)$}{universal quantification, (3)}
+\item[] \wideproparg{}{(5)\hskip1em $Q(c)$}{simplification, (4)}
+\item[] \wideproparg{}{(6)\hskip1em $P(c)$}{simplification, (4)}
+\item[] \wideproparg{}{(7)\hskip1em $R(c)$}{modus ponens, (2) and (6)}
+\item[] \wideproparg{}{(8)\hskip1em $Q(c)\land R(c)$}{conjunction, (5) and (7)}
+\item[] \wideproparg{}{(9)\hskip1em $\exists x\ (Q(x)\land R(x))$}{existential generalization, (8)}
+\end{itemize}}
+\end{example}
+
+\section{Proving Mathematical Theorems}
+
+Most mathematical statements are implications of the form $P\Rightarrow Q$, where $P$ or $Q$ might be compound propositions. In this section we will look at some methods for proving implications. Note that we are using some definitions and results from other areas of mathematics that we have not explicitly stated. We will not allow ourselves to make those kinds of assumptions once we begin our study of set theory.
+
+\subsection{Direct Proofs}
+
+A direct proof\index{proof!direct} of the implication $P\Rightarrow Q$ assumes that the hypothesis $P$ is true, then uses definitions, previously proved theorems, and the rules of inference to deduce that the conclusion $Q$ must also be true. 
+
+\begin{thrm}\label{thrm:evens}
+If $n$ is an even integer, then $n^2$ is even.
+\end{thrm}
+
+The first step in trying to prove any theorem is to make sure you know what it means. In this case, we need to know the definition of an even integer and of the square of an integer. An integer $n$ is even if it can be written as $n=2k$ for some integer $k$. The square of $n$ is the product $n^2=n\times n$.
+
+\begin{itemize}\itemsep0pt\itemindent-2em
+\item[]\wideproparg{Proof.}{(1)\hskip1em $n$ is an even integer}{hypothesis}
+\item[]\wideproparg{}{(2)\hskip1em $n=2k$ for some integer $k$}{definition, (1)}
+\item[]\wideproparg{}{(3)\hskip1em $n^2=(2k)^2$}{definition, (2)}
+\item[]\wideproparg{}{(4)\hskip1em $n^2=4k^2$}{algebra, (3)}
+\item[]\wideproparg{}{(5)\hskip1em $n^2=2(2k^2)$}{algebra, (4)}
+\item[]\wideproparg{}{(4)\hskip1em $n^2$ is even}{definition, (5)}
+\end{itemize}
+
+Although the two-column proof above is valid, it is not written in a format that mathematicians usually find acceptable. We prefer proofs that are written using complete sentences, paragraphs, and correct grammar and punctuation. Here is a better presentation for the previous proof. 
+
+\begin{proof}[Proof of Theorem \ref{thrm:evens}.]
+Let $n$ be an even integer, then by definition $n=2k$ for some integer $k$.  Squaring both sides yields $n^2=4k^2=2(2k^2)$.  Since $2k^2$ is an integer, $2(2k^2)$ is even as desired.
+\end{proof}
+
+We will present some proofs in each format for the remainder of this chapter. You should become used to translating two-column  proofs into paragraph format.
+
+The proof of the following theorem is left as an exercise for the reader.
+
+\begin{thrm}\label{thrm:odds}
+The square of an odd integer is odd.
+\end{thrm}
+
+\subsection{Proving the Contrapositive}
+
+In Exercise \ref{exer:contrapos} you showed that the contrapositive \index{implication!contrapositive}\index{proof!of contrapositive} of an implication is logically equivalent to the implication.  Sometimes it is easier to prove the contrapositive of the implication we are interested in. Consider the following example.
+
+\begin{thrm}\label{thrm:sqeven}
+If $n$ is an integer and $n^2$ is even, then $n$ is even.
+\end{thrm}
+
+We might try to begin this proof as we did the proof of Theorem \ref{thrm:evens}.  First assume that $n^2$ is even.  By definition we know that $n^2=2k$ for some integer $k$.  Now what?  In the previous example we were able to square $2k$ and see that the result was even, but taking the square root doesn't tell us anything useful.  Instead we prove the contrapositive of the theorem: \emph{If $n$ is an integer that is not even, then $n^2$ is not even.} We use the fact that every integer is either even or odd, but never both.
+
+\begin{itemize}\itemsep0pt\itemindent-2em
+\item[]\wideproparg{Proof.}{(1)\hskip1em $n$ is an odd integer}{hypothesis}
+\item[]\wideproparg{}{(2) if $n$ is odd, $n^2$ odd}{Theorem \ref{thrm:odds}}
+\item[]\wideproparg{}{(3)\hskip1em $n^2$ is odd}{modus ponens, (1) and (2)}
+\item[]\wideproparg{}{(4)\hskip1em if $n$ is even, $n^2$ is even}{Theorem \ref{thrm:evens}} 
+\item[]\wideproparg{}{(5)\hskip1em $n$ is odd}{modus tolens, (3) and (4)}
+\end{itemize}
+
+The next theorem can be proved in a similar fashion and is left as an exercise.
+
+\begin{thrm}\label{thrm:sqodd}
+If $n$ is an integer and $n^2$ is odd, then $n$ is odd.
+\end{thrm}
+
+\subsection{Proof by Contradiction}
+
+\paragraph{} A proof by contradiction, or \emph{reductio ad absurdum} \index{proof!contradiction (RAA)}  begins by assuming that the result we are trying to prove is false, then deriving a contradiction from that assumption.  It is easy to confuse this with a direct proof of the contrapositive, which makes different beginning assumptions. To prove the implication $P\Rightarrow Q$ by proving the contrapositive, you assume $\neg Q$ and use that to prove $\neg P$. A proof by contradiction assumes $P\land \neg Q$ and derives a contradiction $R\land \neg R$. Here is a classic example of a proof by contradiction.
+
+\begin{thrm}\label{thrm:sqrttwo}
+There is no rational number $x$ such that $x^2=2$.
+\end{thrm}
+
+\begin{proof}
+Suppose to the contrary that there is a rational number $x$ with
+$x^2=2$.  Since $x$ is rational, we may express $x$ as a fraction $p/q$
+in lowest terms, in other words $p$ and $q$ are integers and no integer
+evenly divides both of them.  Since $x=p/q$ and $x^2=2$, we have
+$p^2/q^2=2$, or:
+\begin{equation}\label{thiseq}
+p^2=2q^2
+\end{equation}
+Since $q^2$ is an integer, $p^2=2q^2$ is even.  So $p$ is an integer and
+$p^2$ is even, so Theorem \ref{thrm:sqeven} implies that $p$ is even.
+This allows us to write $p=2k$ for some integer $k$.  We plug this into
+equation \ref{thiseq} to see that $4k^2=2q^2$, so $q^2=2k^2$. Now $q$ is
+an integer and $q^2$ is even, so another application of Theorem
+\ref{thrm:sqeven} implies that $q$ is even.  We now know that both $p$
+and $q$ are even, so 2 divides both of them.  This contradicts our
+choice of $p$ and $q$, so our assumption that $x$ is rational must be
+incorrect.
+\end{proof}
+
+\subsection{Proof by Cases}
+
+To prove the implication $P\Rightarrow Q$ by cases,\index{proof!cases} we make use of the following argument.: 
+
+\setlength\linwid{5 em}
+\begin{logarg}
+\item $P\Rightarrow (R\lor S)$
+\item $R\Rightarrow Q$
+\item $S\Rightarrow Q$
+\hence $P\Rightarrow Q$
+\end{logarg}
+
+You will be asked to show that this argument is valid in Exercise \ref{exer:cases}.
+\smallbreak
+Here is a very simple example of a proof by cases. We make use of some of the order properties of the real numbers. In particular, we know that multiplying both sides of an inequality by a positive number preserves the inequality, and multiplying both sides of an inequality by a negative number reverses the inequality.
+
+\begin{thrm}\label{thrm:squares}
+If $x$ is a real number, then $x^2\geq 0$.
+\end{thrm}
+
+\begin{proof}
+If $x$ is a real number, then either $x\geq 0$ or $x<0$.
+\begin{itemize}
+\item[]
+\begin{itemize}
+\item[Case 1.] If $x\geq 0$, then we may multiply both sides of this inequality by $0$ to see that $x^2\geq x\cdot 0=0$.
+\item[Case 2.] If $x<0$, then muliplying both sides of the inequality by $x$ reverses the inequality, yielding $x^2>x\cdot 0=0$. Since $x^2>0$ we have $x^2\geq0$. (Why?)
+\end{itemize}
+\end{itemize}
+In either case we have $x^2\geq 0$, so the result is true.
+\end{proof}
+
+\section{Proving Quantified Statements}
+
+\subsection{Universally Quantified Statements}\index{proof!quantified statements!universal}
+
+On the simplest level, a universally quantified statement has the form $\forall x\ P(x)$. To prove such a proposition, we assume that $x$ is in the required domain and show that $P(x)$ must be true. It is frequently helpful to think of such a statement as an implication where the hypothesis is that $x$ is in the required domain, and the conclusion is $P(x)$. In fact, we have alreadu seen such an example when we proved Theorem \ref{thrm:squares}. We could restate this theorem as follows:
+
+\smallbreak\noindent
+{\bfseries Alternate Theorem \ref{thrm:squares}.} {\slshape For every real number $x$, $x^2\geq 0$.}
+\smallbreak\noindent
+Since universally quantified statements can be thought of as implications, we can use the same proof techniques.
+
+\subsection{Existentially Quantified Statements}\index{proof!quantified statements!existential}
+
+Existentially quantified statements are significantly different than implications and universally quantified statements. To prove the statement $\exists x, P(x)$ we must show that there is at least one $x$ in the domain that satisfies $P(x)$. One way to do this is simply to find a single particular example. The following theorem can be proved in this way.
+
+\begin{thrm}
+There is a positive integer $N$ such that $N$, $N+1$, $N+2$, $N+3$, and $N+4$ are all composite (not prime).
+\end{thrm}
+
+\begin{proof}
+Let $N=6!+2$, then $N$ is divisible by 2, $N+1=6!+3$ is divisible by 3, $N+2=6!+4$ is divisible by 4, $N+3=6!+5$ is divisible by 5, and $N+4=6!+6$ is divisible by 6.
+\end{proof}
+
+We note one thing about the last proof. We could just as easily have used the much smaller number $N=24$ since 24, 25, 26, 27, and 28 are all composite. Can you see any advantage to using the number we used?
+
+There are some instances where it is easier to show that some $x$ satifies $P(x)$ without actually finding a particular $x$ that works. Here is an elementary example that works by demonstrating that one of two possible choices must work, without determining which it is. We assume familiarity with the rules for exponents, as well as the existence of an irrational number $x$ such that $x^2=2$. 
+
+\begin{thrm}
+There exist irrational numbers $a$ and $b$ so that $a^b$ is rational.
+\end{thrm}
+
+\begin{proof}
+First note that $\sqrt 2$ is irrational, but \[\left({\sqrt 2}^{\sqrt 2}\right)^{\sqrt 2}=\sqrt 2^{\sqrt 2 \sqrt 2}=\sqrt 2^{\ 2}=2\] is rational. Now it is certainly true that $\sqrt 2^{\sqrt 2}$ is either rational or irrational. If $\sqrt 2^{\sqrt 2}$ is rational, then we set $a=\sqrt 2$ and $b=\sqrt 2$ to find the example we need. If $\sqrt 2^{\sqrt 2}$ is irrational, then we set $a=\sqrt 2^{\sqrt 2}$ and $b=\sqrt 2$ to find the example we need. Either way, there are irrational numbers $a$ and $b$ such that $a^b$ is rational.
+\end{proof}
+
+\subsection{Counterexamples.} \index{counterexample|textbf}
+Consider the following proposition:
+
+\begin{falsethrm}
+Every integer is even.
+\end{falsethrm}
+
+It probably seems clear to you that this statement is false, but how could you prove that?  To prove that a proposition is false we must show that it's negation is true, so we first find the negation of the original statement:
+
+\begin{center} {\sl Some integer is not even.} \end{center}
+
+We have transformed our original problem (proving that a statement is false) into something more familar (proving that a statement is true): How do we prove the second statement is true? As noted above, one way to prove an existentially quantified statement is simply to find the object it says exists.  In this case, we must find an integer that is not even.  Of course, we know many such integers.  Any odd integer will do.  So our proof that the original statement is false consists of finding an example that makes it false: the integer $x=1$ is not even.  Note that you shouldn't just say that there are such examples, you should give a particular one that your reader can check. An example showing that a universally quantified statement is false is called a \emph{counterexample} to that statement.
+
+\section{Mathematical Induction}\index{proof!induction}
+
+There is another type of proof that is frequently used to prove statements about the natural numbers, i.e. the numbers $1,2,3,\ldots$.
+
+\paragraph{The Principle of Mathematical Induction.}\index{mathematical induction|textbf} Let $P(n)$ be a statement about the natural number $n$.
+\begin{enumerate}
+\item If $P(1)$ is true, and 
+\item if $P(k)\implies P(k+1)$ for every natural number $k$,
+\end{enumerate}
+then $P(n)$ is true for every natural number $n$.
+\bigbreak
+All proofs by induction use the following basic outline.  To prove $P(n)$ for all natural numbers $n$,
+\begin{enumerate}
+\item Base Case: Show that $P(1)$ is true.
+\item Inductive Step: Prove the implication $P(k)\implies P(k+1)$ for all $k\in\mathbb N$.  Note: in proving that $P(k)\implies P(k+1)$, the assumption that $P(k)$ is true is often referred to as the inductive hypothesis.
+\item It is considered good form to clearly state that the statement $P(n)$ is now true for all natural numbers $n$ by induction.
+\end{enumerate}
+You might think of a proof by induction as similar to knocking over a row of dominoes.  If you know that knocking over any domino will cause the next one to fall, then knocking over the first domino will cause all of the dominoes to fall. Keep in mind that \emph{you must complete all of the steps above in an inductive proof}.  Here are a couple of examples.
+
+\begin{thrm}
+For each natural number $n$, $\sum\limits_{i=1}^n i=\frac{n(n+1)}2$.
+\end{thrm}
+
+\begin{proof}
+If $n=1$, then \[ \sum_{i=1}^n i=\sum_{i=1}^1 i=1=\frac{1(2)}2=
+\frac{n(n+1)}2, \] so the formula holds for $n=1$.
+
+Now suppose that the formula holds for some $k\in\mathbb N$.  In other
+words, we are assuming that $\sum_{i=1}^k i=\frac{k(k+1)}2$.  We
+want to show that the formula must hold for $n=k+1$.  Using our
+assumption, we compute:
+\begin{equation*}
+\begin{split}
+\sum_{i=1}^{k+1} i &= \left(\sum_{i=1}^k i\right) +(k+1)\\
+&= \frac{k(k+1)}2+(k+1)\\
+&= \frac{k(k+1)}2+\frac{2(k+1)}2\\
+&=\frac{(k+1)(k+2)}2\\
+\end{split}
+\end{equation*}
+Hence the formula holds for $n=k+1$.  By induction, the formula must
+hold for all $n\in\mathbb N$.
+\end{proof}
+
+\clearpage
+
+\section*{Chapter \arabic{chapter} Exercises}
+\addcontentsline{toc}{section}{\protect\numberline{}Chapter \arabic{chapter} Exercises}
+
+\begin{exercise}\label{exer:arg}
+Show that the following argument is valid:
+{\setlength\linwid{1.2in}
+\begin{centeredarg}
+\item $P$
+\item $\neg Q$
+\item $P\Rightarrow(Q\lor R)$
+\hence $R$
+\end{centeredarg}}
+\end{exercise}
+
+\begin{exercise}\label{exer:cases}
+Show that the following argument is valid:
+\begin{centeredarg}
+\item $P\Rightarrow(R\lor S)$
+\item $R\Rightarrow Q$
+\item $S\Rightarrow Q$
+\hence $P\Rightarrow Q$
+\end{centeredarg}
+\end{exercise}
+
+\begin{exercise}
+Show that the following argument is valid:
+{\setlength\linwid{1.7in}
+\begin{centeredarg}
+\item $\forall x\ (P(x)\Rightarrow Q(x))$
+\item $\exists x\ (Q(x)\Rightarrow R(x))$
+\hence $\exists x\ (P(x)\Rightarrow R(x))$
+\end{centeredarg}}
+\end{exercise}
+
+\begin{exercise}
+Which of the following is the best interpretation of the statement: \emph{Every blue meanie is fuzzy}?
+\begin{enumerate}
+\item There are blue meanies and at least one of them is fuzzy.
+\item There are blue meanies and at least two of them are fuzzy.
+\item There are blue meanies and all of them are fuzzy.
+\item There may not be any blue meanies, but if there are at least one of them is fuzzy.
+\item There may not be any blue meanies, but if there are at least two of them are fuzzy.
+\item There may not be any blue meanies, but if there are all of them are fuzzy.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Which of the following is the best interpretation of the statement: \emph{Some blue meanies are fuzzy}?
+\begin{enumerate}
+\item There are blue meanies and at least one of them is fuzzy.
+\item There are blue meanies and at least two of them are fuzzy.
+\item There are blue meanies and all of them are fuzzy.
+\item There may not be any blue meanies, but if there are at least one of them is fuzzy.
+\item There may not be any blue meanies, but if there are at least two of them are fuzzy.
+\item There may not be any blue meanies, but if there are all of them are fuzzy.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Using the proof of Theorem \ref{thrm:evens} as an example, prove Theorem \ref{thrm:odds}.
+\end{exercise}
+
+\begin{exercise}
+Rewrite the proof of Theorem \ref{thrm:sqeven} in paragraph format.
+\end{exercise}
+
+\begin{exercise}
+Using the proof of Theorem \ref{thrm:sqeven} as an example, prove Theorem \ref{thrm:sqodd}.
+\end{exercise}
+
+\begin{exercise} \label{exer:exist}
+Prove the following:
+\begin{enumerate}
+\item Some prime number is even.
+\item There is an integer whose square is not positive.
+\item There is a city $A$ in North Dakota that is further south than Paris, France.
+\item There are positive integers $a$ and $b$ such that $ab<a+b$.
+\item There are irrational numbers $a$ and $b$ such that the sum $a+b$ is rational.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exer:forall}
+Show that the following are false:
+\begin{enumerate}
+\item Every student in this class has green hair.
+\item For every real number $x$, $x^2-1\geq0$.
+\item Every prime number is less than 1000.
+\item  For all irrational numbers $a$ and $b$, the product $ab$ is irrational.
+\item For all prime numbers $n$ and $m$, the sum $n+m$ is composite.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+To show that the statement $\forall x\ P(x)$ is false, it suffices to show that there is an $c$ in the domain of $x$ such that $\neg P(c)$; the value $c$ is called a counterexample. Assume that we believe the statement $\exists x\ P(x)$ is false. Can we prove this by finding a $c$ in the domain of $x$ such that $\neg P(c)$? Justify your answer. 
+\end{exercise}
+
+
+\begin{exercise}
+Use induction to prove that $\sum\limits_{i=0}^n 2^i=(2^{n+1}-1)$ for every natural number $n$.
+\end{exercise}
+
+\begin{exercise}
+Prove that $\sum\limits_{i=1}^n i^2=\displaystyle\frac{n(n+1)(2n+1)}6$ for every natural number $n$.
+\end{exercise}
+
+\begin{exercise}\label{exer:induct}
+Use induction to prove that $2n\leq 2^n$ for every natural number $n$.
+\end{exercise}
+
+\begin{exercise}
+It is sometimes true that statements about the natural numbers are not true for small numbers, but are true for all natural numbers that are large enough. We can modify the Principle of Mathematical Induction so that it is applicable in these situations as follows:
+
+Let $P(n)$ be a statement about the natural number $n$.
+\begin{enumerate}
+\item If $P(a)$ is true, and
+\item if $P(k)\implies P(k+1)$ for all $k\geq a$,
+\end{enumerate}
+then $P(n)$ is true for all natural numbers $n\geq a$.
+
+\smallbreak\noindent
+Use this version of induction to prove that $3^n<n!$ for every integer $n\geq 7$. 
+\end{exercise}
+
+\clearpage
